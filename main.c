@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <regex.h>
 
@@ -23,10 +24,23 @@ int match(const char *string, char *pattern)
     return (1);
 }
 
+void printTwoDimensionArr(double *(arr)[], int row, int col)
+{
+    /* output each array element's value */
+    for (int i = 0; i < row; i++)
+    {
+
+        for (int j = 0; j < col; j++)
+        {
+            printf("a[%d][%d] = %f\n", i, j, arr[i][j]);
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
     FILE *fp;
-    FILE *fw = fopen("file.txt", "w");
+    FILE *fw = fopen("data.txt", "w");
     char buf[BUF_SIZE];
     if (argc != 2)
     {
@@ -40,6 +54,8 @@ int main(int argc, char *argv[])
         return 1;
     }
     int line = 0;
+    char newString[100][100];
+    double result[100][100];
     while (fgets(buf, sizeof(buf), fp) != NULL)
     {
         buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
@@ -47,8 +63,7 @@ int main(int argc, char *argv[])
         {
             // Split number and push into each array
             int i, j, ctr = 0;
-            char newString[100][100];
-            line++;
+
             // Split string into words aka numbers
             for (int i = 0; i < strlen(buf); i++)
             {
@@ -73,23 +88,37 @@ int main(int argc, char *argv[])
                 }
             }
             int start = ctr == 8 ? 1 : 0;
-
+            // Push parse number to data array
             for (int k = start; k <= ctr; k++)
             {
+                double num = strtod(newString[k], NULL);
                 if (fw == NULL)
                 {
                     perror("Cannot create file to write!");
                     return 1;
                 }
+                int row = start == 1 ? k - 1 : k;
+                int col = line;
+                result[row][col] = num;
                 if (ctr == k)
                 {
-                    fprintf(fw, "%s\n", newString[k]);
+                    fprintf(fw, "%f\n", num);
                 }
                 else
                 {
-                    fprintf(fw, "%s  ", newString[k]);
+                    fprintf(fw, "%f  ", num);
                 }
             }
+            line++;
+        }
+    }
+    /* output each array element's value */
+    for (int i = 0; i < 8; i++)
+    {
+
+        for (int j = 0; j < line; j++)
+        {
+            printf("a[%d][%d] = %f\n", i, j, result[i][j]);
         }
     }
     fclose(fw);
