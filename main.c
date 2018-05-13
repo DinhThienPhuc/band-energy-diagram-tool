@@ -72,20 +72,10 @@ int main(int argc, char *argv[])
                     j++;
                 }
             }
-            // printf("%d: %s\n", line, newString[ctr]);
-
-            // Write to file
-            // for (int k = ctr - 7; k <= ctr; k++)
-            // {
-            //     printf("%d: %s\n", k, newString[k]);
-            // }
-            // break;
-            // printf("ctr: %d\n", ctr);
             int start = ctr == 8 ? 1 : 0;
 
             for (int k = start; k <= ctr; k++)
             {
-                // printf("Number: %d\n", stoi(newString[k]));
                 if (fw == NULL)
                 {
                     perror("Cannot create file to write!");
@@ -93,7 +83,6 @@ int main(int argc, char *argv[])
                 }
                 if (ctr == k)
                 {
-                    // printf("truong hop dau tien");
                     fprintf(fw, "%s\n", newString[k]);
                 }
                 else
