@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 {
     FILE *fp;
     FILE *fw = fopen("data.txt", "w");
+    FILE *fwConverted = fopen("converted.txt", "w");
     char buf[BUF_SIZE];
     if (argc != 2)
     {
@@ -100,14 +101,14 @@ int main(int argc, char *argv[])
                 int row = start == 1 ? k - 1 : k;
                 int col = line;
                 result[row][col] = num;
-                if (ctr == k)
-                {
-                    fprintf(fw, "%f\n", num);
-                }
-                else
-                {
-                    fprintf(fw, "%f  ", num);
-                }
+                // if (ctr == k)
+                // {
+                //     fprintf(fw, "%f\n", num);
+                // }
+                // else
+                // {
+                //     fprintf(fw, "%f  ", num);
+                // }
             }
             line++;
         }
@@ -115,10 +116,17 @@ int main(int argc, char *argv[])
     /* output each array element's value */
     for (int i = 0; i < 8; i++)
     {
-
         for (int j = 0; j < line; j++)
         {
-            printf("a[%d][%d] = %f\n", i, j, result[i][j]);
+            // printf("a[%d][%d] = %f\n", i, j, result[i][j]);
+            if (line - 1 == j)
+            {
+                fprintf(fwConverted, "%3.3f\n", result[i][j]);
+            }
+            else
+            {
+                fprintf(fwConverted, "%3.3f  ", result[i][j]);
+            }
         }
     }
     fclose(fw);
