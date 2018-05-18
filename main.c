@@ -24,24 +24,11 @@ int match(const char *string, char *pattern)
     return (1);
 }
 
-void printTwoDimensionArr(double *(arr)[], int row, int col)
-{
-    /* output each array element's value */
-    for (int i = 0; i < row; i++)
-    {
-
-        for (int j = 0; j < col; j++)
-        {
-            printf("a[%d][%d] = %f\n", i, j, arr[i][j]);
-        }
-    }
-}
-
 int main(int argc, char *argv[])
 {
     FILE *fp;
-    FILE *fw = fopen("data.txt", "w");
-    FILE *fwConverted = fopen("converted.txt", "w");
+    FILE *fw = fopen("origin.txt", "w");
+    FILE *fwConverted = fopen("out.txt", "w");
     char buf[BUF_SIZE];
     if (argc != 2)
     {
@@ -121,11 +108,11 @@ int main(int argc, char *argv[])
             // printf("a[%d][%d] = %f\n", i, j, result[i][j]);
             if (line - 1 == j)
             {
-                fprintf(fwConverted, "%3.3f\n", result[i][j]);
+                fprintf(fwConverted, "%6.3f\n", result[i][j]);
             }
             else
             {
-                fprintf(fwConverted, "%3.3f  ", result[i][j]);
+                fprintf(fwConverted, "%6.3f  ", result[i][j]);
             }
         }
     }
