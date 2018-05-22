@@ -88,14 +88,14 @@ int main(int argc, char *argv[])
                 int row = start == 1 ? k - 1 : k;
                 int col = line;
                 result[row][col] = num;
-                // if (ctr == k)
-                // {
-                //     fprintf(fw, "%f\n", num);
-                // }
-                // else
-                // {
-                //     fprintf(fw, "%f  ", num);
-                // }
+                if (ctr == k)
+                {
+                    fprintf(fw, "%6.3f\n", num);
+                }
+                else
+                {
+                    fprintf(fw, "%6.3f  ", num);
+                }
             }
             line++;
         }
