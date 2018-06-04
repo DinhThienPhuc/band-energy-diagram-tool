@@ -1,0 +1,12 @@
+
+ Status file, with repetition rate  49, status number   491
+
+  Level abinit         : call driver   
+  Level driver         : call gstateimg
+  jdtset     =    3
+  Level gstateimg      : enter         
+  Level gstate         : call scfcv    
+  Level scfcv          : berryphase    
+  Level vtorho(tf)     : loop ikpt     
+  isppol     =    1
+  ikpt       =   63

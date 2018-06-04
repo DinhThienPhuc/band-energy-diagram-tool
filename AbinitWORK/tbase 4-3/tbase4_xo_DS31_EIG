@@ -1,0 +1,58 @@
+ Fermi (or HOMO) energy (hartree) =   0.28810   Average Vxc (hartree)=  -0.35005
+ Eigenvalues (hartree) for nkpt=  28  k points:
+ kpt#   1, nband=  3, wtk=  0.02778, kpt= -0.0833 -0.1667  0.0000 (reduced coord)
+  -0.10451   0.58898   0.67133
+ kpt#   2, nband=  3, wtk=  0.02778, kpt= -0.0833 -0.3333  0.0000 (reduced coord)
+  -0.02881   0.35224   0.64000
+ kpt#   3, nband=  3, wtk=  0.02778, kpt= -0.1667 -0.2500  0.0000 (reduced coord)
+  -0.06651   0.52032   0.60693
+ kpt#   4, nband=  3, wtk=  0.05556, kpt= -0.0833 -0.2500  0.0833 (reduced coord)
+  -0.04762   0.43595   0.55194
+ kpt#   5, nband=  3, wtk=  0.02778, kpt= -0.0833  0.5000  0.0000 (reduced coord)
+   0.10066   0.15672   0.63267
+ kpt#   6, nband=  3, wtk=  0.02778, kpt= -0.1667 -0.4167  0.0000 (reduced coord)
+   0.02723   0.29910   0.56796
+ kpt#   7, nband=  3, wtk=  0.05556, kpt= -0.0833 -0.4167  0.0833 (reduced coord)
+   0.06422   0.22819   0.54929
+ kpt#   8, nband=  3, wtk=  0.02778, kpt= -0.2500 -0.3333  0.0000 (reduced coord)
+  -0.01009   0.46776   0.53405
+ kpt#   9, nband=  3, wtk=  0.05556, kpt= -0.1667 -0.3333  0.0833 (reduced coord)
+   0.00861   0.38319   0.50024
+ kpt#  10, nband=  3, wtk=  0.05556, kpt= -0.0833 -0.3333  0.1667 (reduced coord)
+   0.04578   0.31308   0.43476
+ kpt#  11, nband=  3, wtk=  0.02778, kpt= -0.0833  0.3333  0.0000 (reduced coord)
+   0.00863   0.28180   0.59901
+ kpt#  12, nband=  3, wtk=  0.02778, kpt= -0.1667  0.4167  0.0000 (reduced coord)
+   0.11883   0.17459   0.50006
+ kpt#  13, nband=  3, wtk=  0.02778, kpt= -0.2500  0.5000  0.0000 (reduced coord)
+   0.10063   0.26324   0.43082
+ kpt#  14, nband=  3, wtk=  0.05556, kpt= -0.1667  0.5000  0.0833 (reduced coord)
+   0.13670   0.19257   0.46428
+ kpt#  15, nband=  3, wtk=  0.02778, kpt= -0.3333 -0.4167  0.0000 (reduced coord)
+   0.06398   0.39376   0.43431
+ kpt#  16, nband=  3, wtk=  0.05556, kpt= -0.2500 -0.4167  0.0833 (reduced coord)
+   0.08237   0.34741   0.41190
+ kpt#  17, nband=  3, wtk=  0.05556, kpt= -0.1667 -0.4167  0.1667 (reduced coord)
+   0.11890   0.27758   0.39741
+ kpt#  18, nband=  3, wtk=  0.05556, kpt= -0.0833 -0.4167  0.2500 (reduced coord)
+   0.17276   0.22482   0.34697
+ kpt#  19, nband=  3, wtk=  0.02778, kpt= -0.0833  0.1667  0.0000 (reduced coord)
+  -0.08548   0.50539   0.61642
+ kpt#  20, nband=  3, wtk=  0.02778, kpt= -0.1667  0.2500  0.0000 (reduced coord)
+  -0.01004   0.36602   0.48652
+ kpt#  21, nband=  3, wtk=  0.02778, kpt= -0.2500  0.3333  0.0000 (reduced coord)
+   0.10093   0.26002   0.38269
+ kpt#  22, nband=  3, wtk=  0.02778, kpt= -0.3333  0.4167  0.0000 (reduced coord)
+   0.18776   0.24464   0.31225
+ kpt#  23, nband=  3, wtk=  0.02778, kpt= -0.4167  0.5000  0.0000 (reduced coord)
+   0.15240   0.27355   0.41626
+ kpt#  24, nband=  3, wtk=  0.05556, kpt= -0.3333  0.5000  0.0833 (reduced coord)
+   0.17022   0.28993   0.33271
+ kpt#  25, nband=  3, wtk=  0.05556, kpt= -0.2500  0.5000  0.1667 (reduced coord)
+   0.20559   0.25932   0.32651
+ kpt#  26, nband=  3, wtk=  0.00926, kpt= -0.0833  0.0000  0.0000 (reduced coord)
+  -0.12363   0.67078   0.74854
+ kpt#  27, nband=  3, wtk=  0.00926, kpt= -0.2500  0.0000  0.0000 (reduced coord)
+  -0.06652   0.42212   0.70483
+ kpt#  28, nband=  3, wtk=  0.00926, kpt= -0.4167  0.0000  0.0000 (reduced coord)
+   0.04576   0.21057   0.70600

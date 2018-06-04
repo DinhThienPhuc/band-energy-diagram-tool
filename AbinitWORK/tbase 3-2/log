@@ -1,0 +1,456 @@
+  ABINIT 
+  
+  Give name for formatted input file: 
+tbase3_2.in
+  Give name for formatted output file:
+tbase3_2.out
+  Give root name for generic input files:
+tbase3_xi
+  Give root name for generic output files:
+tbase3_xo
+  Give root name for generic temporary files:
+tbase3_x
+
+ herald :  WARNING -
+  The starting date is more than 3 years after the initial release
+  of this version of ABINIT, namely Aug 2013.
+  This version of ABINIT is not supported anymore.
+  Action : please, switch to a more recent version of ABINIT.
+
+.Version 7.4.3 of ABINIT 
+.(MPI version, prepared for a i686_cygwin_gnu4.7 computer) 
+
+.Copyright (C) 1998-2013 ABINIT group . 
+ ABINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read ~abinit/doc/users/acknowledgments.html for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see http://www.abinit.org .
+
+.Starting date : Mon  4 Jun 2018.
+- ( at 12h47 )
+  
+
+ herald :  WARNING -
+  The starting date is more than 3 years after the initial release
+  of this version of ABINIT, namely Aug 2013.
+  This version of ABINIT is not supported anymore.
+  Action : please, switch to a more recent version of ABINIT.
+
+ herald :  WARNING -
+  The starting date is more than 3 years after the initial release
+  of this version of ABINIT, namely Aug 2013.
+  This version of ABINIT is not supported anymore.
+  Action : please, switch to a more recent version of ABINIT.
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ === Build Information === 
+  Version       : 7.4.3
+  Build target  : i686_cygwin_gnu4.7
+  Build date    : 20131019
+
+ === Compiler Suite === 
+  C compiler       : gnu
+  CFLAGS           : -mfpmath=sse -msse2 -O2 -Wstrict-aliasing=2 -static
+  C++ compiler     : gnu4.7
+  CXXFLAGS         : -mfpmath=sse -msse2 -O2 -Wstrict-aliasing=2 -static
+  Fortran compiler : gnu4.7
+  FCFLAGS          : -mfpmath=sse -msse2 -O2 -ffree-line-length-none -Wstrict-aliasing=2 -static
+  FC_LDFLAGS       : 
+
+ === Optimizations === 
+  Debug level        : no
+  Optimization level : standard
+  Architecture       : _
+
+ === MPI === 
+  Parallel build : yes
+  Parallel I/O   : no
+  Time tracing   : no
+  GPU support    : no
+
+ === Connectors / Fallbacks === 
+  Connectors on : yes
+  Fallbacks on  : yes
+  DFT flavor    : libxc+atompaw+bigdft+wannier90
+  FFT flavor    : none
+  LINALG flavor : netlib
+  MATH flavor   : none
+  TIMER flavor  : abinit
+  TRIO flavor   : netcdf+etsf_io
+
+ === Experimental features === 
+  Bindings            : no
+  Exports             : no
+  GW double-precision : yes
+
+ === Bazaar branch information === 
+  Branch ID : xavier.gonze@uclouvain.be-20131019063522-8wupmx7xtg5stywd
+  Revision  : 490
+  Committed : 0
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Default optimizations:
+   --- None ---
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ CPP options activated during the build:
+
+                    CC_GNU                   CXX_GNU                    FC_GNU
+
+           HAVE_BZR_BRANCH          HAVE_DFT_ATOMPAW           HAVE_DFT_BIGDFT
+
+            HAVE_DFT_LIBXC        HAVE_DFT_WANNIER90 HAVE_FC_ALLOCATABLE_DT...
+
+      HAVE_FC_COMMAND_LINE        HAVE_FC_CONTIGUOUS           HAVE_FC_CPUTIME
+
+              HAVE_FC_EXIT             HAVE_FC_FLUSH             HAVE_FC_GAMMA
+
+            HAVE_FC_GETENV          HAVE_FC_INT_QUAD             HAVE_FC_IOMSG
+
+     HAVE_FC_ISO_C_BINDING        HAVE_FC_LONG_LINES              HAVE_FC_NULL
+
+         HAVE_FC_STREAM_IO          HAVE_FORTRAN2003               HAVE_LINALG
+
+        HAVE_LINALG_SERIAL                  HAVE_MPI                 HAVE_MPI1
+
+ HAVE_MPI_TYPE_CREATE_S...           HAVE_OS_WINDOWS                HAVE_TIMER
+
+         HAVE_TIMER_ABINIT            HAVE_TIMER_MPI         HAVE_TIMER_SERIAL
+
+         HAVE_TRIO_ETSF_IO          HAVE_TRIO_NETCDF
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- input  file    -> tbase3_2.in
+- output file    -> tbase3_2.out
+- root for input  files -> tbase3_xi
+- root for output files -> tbase3_xo
+
+-instrng :    78 lines of input have been read from file tbase3_2.in
+
+
+ iofn2 : Please give name of formatted atomic psp file
+ iofn2 : for atom type   1 , psp file is 14si.pspnc
+  read the values zionpsp=  4.0 , pspcod=   1 , lmax=   2
+
+ inpspheads : deduce mpsang  =   3, n1xccc  =2501.
+
+ invars1m : enter jdtset=     0
+ invars1 : treat image number     1
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+  xred   is defined in input file
+ ingeo : takes atomic coordinates from input array xred
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+ symspgr : the symmetry operation no.   1 is the identity
+ symspgr : the symmetry operation no.   2 is an inversion
+ symaxes : the symmetry operation no.   3 is a 2-axis
+ symplanes : the symmetry operation no.   4 is a d plane
+ symaxes : the symmetry operation no.   5 is a 2-axis
+ symplanes : the symmetry operation no.   6 is a d plane
+ symaxes : the symmetry operation no.   7 is a 2-axis
+ symplanes : the symmetry operation no.   8 is a d plane
+ symplanes : the symmetry operation no.   9 is a mirror plane
+ symaxes : the symmetry operation no.  10 is a 2_1-axis
+ symspgr : the symmetry operation no.  11 is a -4 axis
+ symaxes : the symmetry operation no.  12 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  13 is a mirror plane
+ symaxes : the symmetry operation no.  14 is a 2-axis
+ symspgr : the symmetry operation no.  15 is a -4 axis
+ symaxes : the symmetry operation no.  16 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no.  17 is a 3-axis
+ symspgr : the symmetry operation no.  18 is a -3 axis
+ symaxes : the symmetry operation no.  19 is a 3-axis
+ symspgr : the symmetry operation no.  20 is a -3 axis
+ symaxes : the symmetry operation no.  21 is a 3-axis
+ symspgr : the symmetry operation no.  22 is a -3 axis
+ symaxes : the symmetry operation no.  23 is a 3-axis
+ symspgr : the symmetry operation no.  24 is a -3 axis
+ symplanes : the symmetry operation no.  25 is a mirror plane
+ symaxes : the symmetry operation no.  26 is a 2_1-axis
+ symspgr : the symmetry operation no.  27 is a -4 axis
+ symaxes : the symmetry operation no.  28 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  29 is a -4 axis
+ symaxes : the symmetry operation no.  30 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  31 is a mirror plane
+ symaxes : the symmetry operation no.  32 is a 2-axis
+ symaxes : the symmetry operation no.  33 is a 3-axis
+ symspgr : the symmetry operation no.  34 is a -3 axis
+ symaxes : the symmetry operation no.  35 is a 3-axis
+ symspgr : the symmetry operation no.  36 is a -3 axis
+ symaxes : the symmetry operation no.  37 is a 3-axis
+ symspgr : the symmetry operation no.  38 is a -3 axis
+ symaxes : the symmetry operation no.  39 is a 3-axis
+ symspgr : the symmetry operation no.  40 is a -3 axis
+ symplanes : the symmetry operation no.  41 is a mirror plane
+ symaxes : the symmetry operation no.  42 is a 2-axis
+ symplanes : the symmetry operation no.  43 is a mirror plane
+ symaxes : the symmetry operation no.  44 is a 2_1-axis
+ symspgr : the symmetry operation no.  45 is a -4 axis
+ symaxes : the symmetry operation no.  46 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  47 is a -4 axis
+ symaxes : the symmetry operation no.  48 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  49 is a pure translation
+ symspgr : the symmetry operation no.  50 is an inversion
+ symaxes : the symmetry operation no.  51 is a 2_1-axis
+ symplanes : the symmetry operation no.  52 is a d plane
+ symaxes : the symmetry operation no.  53 is a 2_1-axis
+ symplanes : the symmetry operation no.  54 is a d plane
+ symaxes : the symmetry operation no.  55 is a 2-axis
+ symplanes : the symmetry operation no.  56 is a d plane
+ symplanes : the symmetry operation no.  57 is a tertiary m plane
+ symaxes : the symmetry operation no.  58 is a 2-axis
+ symspgr : the symmetry operation no.  59 is a -4 axis
+ symaxes : the symmetry operation no.  60 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  61 is a tertiary m plane
+ symaxes : the symmetry operation no.  62 is a 2_1-axis
+ symspgr : the symmetry operation no.  63 is a -4 axis
+ symaxes : the symmetry operation no.  64 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no.  65 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  66 is a -3 axis
+ symaxes : the symmetry operation no.  67 is a 3-axis
+ symspgr : the symmetry operation no.  68 is a -3 axis
+ symaxes : the symmetry operation no.  69 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  70 is a -3 axis
+ symaxes : the symmetry operation no.  71 is a 3-axis
+ symspgr : the symmetry operation no.  72 is a -3 axis
+ symplanes : the symmetry operation no.  73 is a tertiary m plane
+ symaxes : the symmetry operation no.  74 is a 2_1-axis
+ symspgr : the symmetry operation no.  75 is a -4 axis
+ symaxes : the symmetry operation no.  76 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  77 is a -4 axis
+ symaxes : the symmetry operation no.  78 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  79 is a mirror plane
+ symaxes : the symmetry operation no.  80 is a 2-axis
+ symaxes : the symmetry operation no.  81 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  82 is a -3 axis
+ symaxes : the symmetry operation no.  83 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  84 is a -3 axis
+ symaxes : the symmetry operation no.  85 is a 3-axis
+ symspgr : the symmetry operation no.  86 is a -3 axis
+ symaxes : the symmetry operation no.  87 is a 3-axis
+ symspgr : the symmetry operation no.  88 is a -3 axis
+ symplanes : the symmetry operation no.  89 is a tertiary m plane
+ symaxes : the symmetry operation no.  90 is a 2_1-axis
+ symplanes : the symmetry operation no.  91 is a tertiary m plane
+ symaxes : the symmetry operation no.  92 is a 2-axis
+ symspgr : the symmetry operation no.  93 is a -4 axis
+ symaxes : the symmetry operation no.  94 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  95 is a -4 axis
+ symaxes : the symmetry operation no.  96 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  97 is a pure translation
+ symspgr : the symmetry operation no.  98 is an inversion
+ symaxes : the symmetry operation no.  99 is a 2-axis
+ symplanes : the symmetry operation no. 100 is a d plane
+ symaxes : the symmetry operation no. 101 is a 2_1-axis
+ symplanes : the symmetry operation no. 102 is a d plane
+ symaxes : the symmetry operation no. 103 is a 2_1-axis
+ symplanes : the symmetry operation no. 104 is a d plane
+ symplanes : the symmetry operation no. 105 is a tertiary m plane
+ symaxes : the symmetry operation no. 106 is a 2-axis
+ symspgr : the symmetry operation no. 107 is a -4 axis
+ symaxes : the symmetry operation no. 108 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 109 is a tertiary m plane
+ symaxes : the symmetry operation no. 110 is a 2_1-axis
+ symspgr : the symmetry operation no. 111 is a -4 axis
+ symaxes : the symmetry operation no. 112 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no. 113 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 114 is a -3 axis
+ symaxes : the symmetry operation no. 115 is a 3-axis
+ symspgr : the symmetry operation no. 116 is a -3 axis
+ symaxes : the symmetry operation no. 117 is a 3-axis
+ symspgr : the symmetry operation no. 118 is a -3 axis
+ symaxes : the symmetry operation no. 119 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 120 is a -3 axis
+ symplanes : the symmetry operation no. 121 is a tertiary m plane
+ symaxes : the symmetry operation no. 122 is a 2-axis
+ symspgr : the symmetry operation no. 123 is a -4 axis
+ symaxes : the symmetry operation no. 124 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 125 is a -4 axis
+ symaxes : the symmetry operation no. 126 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 127 is a tertiary m plane
+ symaxes : the symmetry operation no. 128 is a 2_1-axis
+ symaxes : the symmetry operation no. 129 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 130 is a -3 axis
+ symaxes : the symmetry operation no. 131 is a 3-axis
+ symspgr : the symmetry operation no. 132 is a -3 axis
+ symaxes : the symmetry operation no. 133 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 134 is a -3 axis
+ symaxes : the symmetry operation no. 135 is a 3-axis
+ symspgr : the symmetry operation no. 136 is a -3 axis
+ symplanes : the symmetry operation no. 137 is a tertiary m plane
+ symaxes : the symmetry operation no. 138 is a 2-axis
+ symplanes : the symmetry operation no. 139 is a mirror plane
+ symaxes : the symmetry operation no. 140 is a 2_1-axis
+ symspgr : the symmetry operation no. 141 is a -4 axis
+ symaxes : the symmetry operation no. 142 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 143 is a -4 axis
+ symaxes : the symmetry operation no. 144 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 145 is a pure translation
+ symspgr : the symmetry operation no. 146 is an inversion
+ symaxes : the symmetry operation no. 147 is a 2_1-axis
+ symplanes : the symmetry operation no. 148 is a d plane
+ symaxes : the symmetry operation no. 149 is a 2-axis
+ symplanes : the symmetry operation no. 150 is a d plane
+ symaxes : the symmetry operation no. 151 is a 2_1-axis
+ symplanes : the symmetry operation no. 152 is a d plane
+ symplanes : the symmetry operation no. 153 is a tertiary m plane
+ symaxes : the symmetry operation no. 154 is a 2_1-axis
+ symspgr : the symmetry operation no. 155 is a -4 axis
+ symaxes : the symmetry operation no. 156 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 157 is a mirror plane
+ symaxes : the symmetry operation no. 158 is a 2-axis
+ symspgr : the symmetry operation no. 159 is a -4 axis
+ symaxes : the symmetry operation no. 160 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no. 161 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 162 is a -3 axis
+ symaxes : the symmetry operation no. 163 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 164 is a -3 axis
+ symaxes : the symmetry operation no. 165 is a 3-axis
+ symspgr : the symmetry operation no. 166 is a -3 axis
+ symaxes : the symmetry operation no. 167 is a 3-axis
+ symspgr : the symmetry operation no. 168 is a -3 axis
+ symplanes : the symmetry operation no. 169 is a tertiary m plane
+ symaxes : the symmetry operation no. 170 is a 2-axis
+ symspgr : the symmetry operation no. 171 is a -4 axis
+ symaxes : the symmetry operation no. 172 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 173 is a -4 axis
+ symaxes : the symmetry operation no. 174 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 175 is a tertiary m plane
+ symaxes : the symmetry operation no. 176 is a 2_1-axis
+ symaxes : the symmetry operation no. 177 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 178 is a -3 axis
+ symaxes : the symmetry operation no. 179 is a 3-axis
+ symspgr : the symmetry operation no. 180 is a -3 axis
+ symaxes : the symmetry operation no. 181 is a 3-axis
+ symspgr : the symmetry operation no. 182 is a -3 axis
+ symaxes : the symmetry operation no. 183 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 184 is a -3 axis
+ symplanes : the symmetry operation no. 185 is a tertiary m plane
+
+ getkgrid.F90:415:BUG
+   The argument nkpt=     2, does not match
+  the number of k points generated by kptopt, kptrlatt, shiftk,
+  and the eventual symmetries, that is, nkpt=    10.
+  However, note that it might be due to the user,
+  if nkpt is explicitely defined in the input file.
+  In this case, please check your input file.
+  Action : contact ABINIT group.
+
+ symaxes : the symmetry operation no. 186 is a 2_1-axis
+ symplanes : the symmetry operation no. 187 is a tertiary m plane
+ symaxes : the symmetry operation no. 188 is a 2-axis
+ symspgr : the symmetry operation no. 189 is a -4 axis
+ symaxes : the symmetry operation no. 190 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 191 is a -4 axis
+ symaxes : the symmetry operation no. 192 is a 4_1 or 4_3-axis
+ symspgr : spgroup= 227  Fd -3 m   (=Oh^7)
+ getkgrid : length of smallest supercell vector (bohr)=    4.072000E+01
+       Simple Lattice Grid
+ symkpt : found identity, with number  1
+ DATA TYPE INFORMATION: 
+ REAL:      Data type name: REAL(DP) 
+            Kind value:      8
+            Precision:      15
+            Smallest nonnegligible quantity relative to 1:  0.22204460E-15
+            Smallest positive number:                       0.22250739-307
+            Largest representable number:                   0.17976931+309
+ INTEGER:   Data type name: INTEGER(default) 
+            Kind value: 4
+            Bit size:   32
+            Largest representable number: 2147483647
+ LOGICAL:   Data type name: LOGICAL 
+            Kind value: 4
+ CHARACTER: Data type name: CHARACTER             Kind value: 1
+  ==== Using MPI-1 specifications ==== 
+  MPI-IO support is OFF
+  xmpi_tag_ub ................   2147483647
+  xmpi_bsize_ch ..............            1
+  xmpi_bsize_int .............            4
+  xmpi_bsize_sp ..............            4
+  xmpi_bsize_dp ..............            8
+  xmpi_bsize_spc .............            8
+  xmpi_bsize_dpc .............           16
+  xmpio_bsize_frm ............            0
+  xmpi_address_kind ..........            8
+  xmpi_offset_kind ...........            8
+  MPI_WTICK ..................    5.7018069026074364E-007
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ === Build Information === 
+  Version       : 7.4.3
+  Build target  : i686_cygwin_gnu4.7
+  Build date    : 20131019
+
+ === Compiler Suite === 
+  C compiler       : gnu
+  CFLAGS           : -mfpmath=sse -msse2 -O2 -Wstrict-aliasing=2 -static
+  C++ compiler     : gnu4.7
+  CXXFLAGS         : -mfpmath=sse -msse2 -O2 -Wstrict-aliasing=2 -static
+  Fortran compiler : gnu4.7
+  FCFLAGS          : -mfpmath=sse -msse2 -O2 -ffree-line-length-none -Wstrict-aliasing=2 -static
+  FC_LDFLAGS       : 
+
+ === Optimizations === 
+  Debug level        : no
+  Optimization level : standard
+  Architecture       : _
+
+ === MPI === 
+  Parallel build : yes
+  Parallel I/O   : no
+  Time tracing   : no
+  GPU support    : no
+
+ === Connectors / Fallbacks === 
+  Connectors on : yes
+  Fallbacks on  : yes
+  DFT flavor    : libxc+atompaw+bigdft+wannier90
+  FFT flavor    : none
+  LINALG flavor : netlib
+  MATH flavor   : none
+  TIMER flavor  : abinit
+  TRIO flavor   : netcdf+etsf_io
+
+ === Experimental features === 
+  Bindings            : no
+  Exports             : no
+  GW double-precision : yes
+
+ === Bazaar branch information === 
+  Branch ID : xavier.gonze@uclouvain.be-20131019063522-8wupmx7xtg5stywd
+  Revision  : 490
+  Committed : 0
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ getkgrid.F90:415:BUG
+   The argument nkpt=     2, does not match
+  the number of k points generated by kptopt, kptrlatt, shiftk,
+  and the eventual symmetries, that is, nkpt=    10.
+  However, note that it might be due to the user,
+  if nkpt is explicitely defined in the input file.
+  In this case, please check your input file.
+  Action : contact ABINIT group.
+
+.Delivered    3 WARNINGs and   0 COMMENTs to log file.
+
+ leave_new : decision taken to exit ...

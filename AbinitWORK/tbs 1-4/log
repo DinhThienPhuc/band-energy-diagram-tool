@@ -1,0 +1,971 @@
+  ABINIT 
+  
+  Give name for formatted input file: 
+tbs_4.in
+  Give name for formatted output file:
+tbs_4.out
+  Give root name for generic input files:
+tbs_4i
+  Give root name for generic output files:
+tbs_4o
+  Give root name for generic temporary files:
+tbs_4t
+
+ herald :  WARNING -
+  The starting date is more than 3 years after the initial release
+  of this version of ABINIT, namely Aug 2013.
+  This version of ABINIT is not supported anymore.
+  Action : please, switch to a more recent version of ABINIT.
+
+.Version 7.4.3 of ABINIT 
+.(MPI version, prepared for a i686_cygwin_gnu4.7 computer) 
+
+.Copyright (C) 1998-2013 ABINIT group . 
+ ABINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read ~abinit/doc/users/acknowledgments.html for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see http://www.abinit.org .
+
+.Starting date : Mon  4 Jun 2018.
+- ( at 13h20 )
+  
+
+ herald :  WARNING -
+  The starting date is more than 3 years after the initial release
+  of this version of ABINIT, namely Aug 2013.
+  This version of ABINIT is not supported anymore.
+  Action : please, switch to a more recent version of ABINIT.
+
+ herald :  WARNING -
+  The starting date is more than 3 years after the initial release
+  of this version of ABINIT, namely Aug 2013.
+  This version of ABINIT is not supported anymore.
+  Action : please, switch to a more recent version of ABINIT.
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ === Build Information === 
+  Version       : 7.4.3
+  Build target  : i686_cygwin_gnu4.7
+  Build date    : 20131019
+
+ === Compiler Suite === 
+  C compiler       : gnu
+  CFLAGS           : -mfpmath=sse -msse2 -O2 -Wstrict-aliasing=2 -static
+  C++ compiler     : gnu4.7
+  CXXFLAGS         : -mfpmath=sse -msse2 -O2 -Wstrict-aliasing=2 -static
+  Fortran compiler : gnu4.7
+  FCFLAGS          : -mfpmath=sse -msse2 -O2 -ffree-line-length-none -Wstrict-aliasing=2 -static
+  FC_LDFLAGS       : 
+
+ === Optimizations === 
+  Debug level        : no
+  Optimization level : standard
+  Architecture       : _
+
+ === MPI === 
+  Parallel build : yes
+  Parallel I/O   : no
+  Time tracing   : no
+  GPU support    : no
+
+ === Connectors / Fallbacks === 
+  Connectors on : yes
+  Fallbacks on  : yes
+  DFT flavor    : libxc+atompaw+bigdft+wannier90
+  FFT flavor    : none
+  LINALG flavor : netlib
+  MATH flavor   : none
+  TIMER flavor  : abinit
+  TRIO flavor   : netcdf+etsf_io
+
+ === Experimental features === 
+  Bindings            : no
+  Exports             : no
+  GW double-precision : yes
+
+ === Bazaar branch information === 
+  Branch ID : xavier.gonze@uclouvain.be-20131019063522-8wupmx7xtg5stywd
+  Revision  : 490
+  Committed : 0
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Default optimizations:
+   --- None ---
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ CPP options activated during the build:
+
+                    CC_GNU                   CXX_GNU                    FC_GNU
+
+           HAVE_BZR_BRANCH          HAVE_DFT_ATOMPAW           HAVE_DFT_BIGDFT
+
+            HAVE_DFT_LIBXC        HAVE_DFT_WANNIER90 HAVE_FC_ALLOCATABLE_DT...
+
+      HAVE_FC_COMMAND_LINE        HAVE_FC_CONTIGUOUS           HAVE_FC_CPUTIME
+
+              HAVE_FC_EXIT             HAVE_FC_FLUSH             HAVE_FC_GAMMA
+
+            HAVE_FC_GETENV          HAVE_FC_INT_QUAD             HAVE_FC_IOMSG
+
+     HAVE_FC_ISO_C_BINDING        HAVE_FC_LONG_LINES              HAVE_FC_NULL
+
+         HAVE_FC_STREAM_IO          HAVE_FORTRAN2003               HAVE_LINALG
+
+        HAVE_LINALG_SERIAL                  HAVE_MPI                 HAVE_MPI1
+
+ HAVE_MPI_TYPE_CREATE_S...           HAVE_OS_WINDOWS                HAVE_TIMER
+
+         HAVE_TIMER_ABINIT            HAVE_TIMER_MPI         HAVE_TIMER_SERIAL
+
+         HAVE_TRIO_ETSF_IO          HAVE_TRIO_NETCDF
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- input  file    -> tbs_4.in
+- output file    -> tbs_4.out
+- root for input  files -> tbs_4i
+- root for output files -> tbs_4o
+
+-instrng :    90 lines of input have been read from file tbs_4.in
+
+
+ iofn2 : Please give name of formatted atomic psp file
+ iofn2 : for atom type   1 , psp file is 14si.pspnc
+  read the values zionpsp=  4.0 , pspcod=   1 , lmax=   2
+
+ inpspheads : deduce mpsang  =   3, n1xccc  =2501.
+
+ invars1m : enter jdtset=     1
+ invars1 : treat image number     1
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+  xred   is defined in input file
+ ingeo : takes atomic coordinates from input array xred
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+ symspgr : the symmetry operation no.   1 is the identity
+ symspgr : the symmetry operation no.   2 is an inversion
+ symaxes : the symmetry operation no.   3 is a 2-axis
+ symplanes : the symmetry operation no.   4 is a d plane
+ symaxes : the symmetry operation no.   5 is a 2-axis
+ symplanes : the symmetry operation no.   6 is a d plane
+ symaxes : the symmetry operation no.   7 is a 2-axis
+ symplanes : the symmetry operation no.   8 is a d plane
+ symplanes : the symmetry operation no.   9 is a mirror plane
+ symaxes : the symmetry operation no.  10 is a 2_1-axis
+ symspgr : the symmetry operation no.  11 is a -4 axis
+ symaxes : the symmetry operation no.  12 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  13 is a mirror plane
+ symaxes : the symmetry operation no.  14 is a 2-axis
+ symspgr : the symmetry operation no.  15 is a -4 axis
+ symaxes : the symmetry operation no.  16 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no.  17 is a 3-axis
+ symspgr : the symmetry operation no.  18 is a -3 axis
+ symaxes : the symmetry operation no.  19 is a 3-axis
+ symspgr : the symmetry operation no.  20 is a -3 axis
+ symaxes : the symmetry operation no.  21 is a 3-axis
+ symspgr : the symmetry operation no.  22 is a -3 axis
+ symaxes : the symmetry operation no.  23 is a 3-axis
+ symspgr : the symmetry operation no.  24 is a -3 axis
+ symplanes : the symmetry operation no.  25 is a mirror plane
+ symaxes : the symmetry operation no.  26 is a 2_1-axis
+ symspgr : the symmetry operation no.  27 is a -4 axis
+ symaxes : the symmetry operation no.  28 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  29 is a -4 axis
+ symaxes : the symmetry operation no.  30 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  31 is a mirror plane
+ symaxes : the symmetry operation no.  32 is a 2-axis
+ symaxes : the symmetry operation no.  33 is a 3-axis
+ symspgr : the symmetry operation no.  34 is a -3 axis
+ symaxes : the symmetry operation no.  35 is a 3-axis
+ symspgr : the symmetry operation no.  36 is a -3 axis
+ symaxes : the symmetry operation no.  37 is a 3-axis
+ symspgr : the symmetry operation no.  38 is a -3 axis
+ symaxes : the symmetry operation no.  39 is a 3-axis
+ symspgr : the symmetry operation no.  40 is a -3 axis
+ symplanes : the symmetry operation no.  41 is a mirror plane
+ symaxes : the symmetry operation no.  42 is a 2-axis
+ symplanes : the symmetry operation no.  43 is a mirror plane
+ symaxes : the symmetry operation no.  44 is a 2_1-axis
+ symspgr : the symmetry operation no.  45 is a -4 axis
+ symaxes : the symmetry operation no.  46 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  47 is a -4 axis
+ symaxes : the symmetry operation no.  48 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  49 is a pure translation
+ symspgr : the symmetry operation no.  50 is an inversion
+ symaxes : the symmetry operation no.  51 is a 2_1-axis
+ symplanes : the symmetry operation no.  52 is a d plane
+ symaxes : the symmetry operation no.  53 is a 2_1-axis
+ symplanes : the symmetry operation no.  54 is a d plane
+ symaxes : the symmetry operation no.  55 is a 2-axis
+ symplanes : the symmetry operation no.  56 is a d plane
+ symplanes : the symmetry operation no.  57 is a tertiary m plane
+ symaxes : the symmetry operation no.  58 is a 2-axis
+ symspgr : the symmetry operation no.  59 is a -4 axis
+ symaxes : the symmetry operation no.  60 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  61 is a tertiary m plane
+ symaxes : the symmetry operation no.  62 is a 2_1-axis
+ symspgr : the symmetry operation no.  63 is a -4 axis
+ symaxes : the symmetry operation no.  64 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no.  65 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  66 is a -3 axis
+ symaxes : the symmetry operation no.  67 is a 3-axis
+ symspgr : the symmetry operation no.  68 is a -3 axis
+ symaxes : the symmetry operation no.  69 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  70 is a -3 axis
+ symaxes : the symmetry operation no.  71 is a 3-axis
+ symspgr : the symmetry operation no.  72 is a -3 axis
+ symplanes : the symmetry operation no.  73 is a tertiary m plane
+ symaxes : the symmetry operation no.  74 is a 2_1-axis
+ symspgr : the symmetry operation no.  75 is a -4 axis
+ symaxes : the symmetry operation no.  76 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  77 is a -4 axis
+ symaxes : the symmetry operation no.  78 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  79 is a mirror plane
+ symaxes : the symmetry operation no.  80 is a 2-axis
+ symaxes : the symmetry operation no.  81 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  82 is a -3 axis
+ symaxes : the symmetry operation no.  83 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  84 is a -3 axis
+ symaxes : the symmetry operation no.  85 is a 3-axis
+ symspgr : the symmetry operation no.  86 is a -3 axis
+ symaxes : the symmetry operation no.  87 is a 3-axis
+ symspgr : the symmetry operation no.  88 is a -3 axis
+ symplanes : the symmetry operation no.  89 is a tertiary m plane
+ symaxes : the symmetry operation no.  90 is a 2_1-axis
+ symplanes : the symmetry operation no.  91 is a tertiary m plane
+ symaxes : the symmetry operation no.  92 is a 2-axis
+ symspgr : the symmetry operation no.  93 is a -4 axis
+ symaxes : the symmetry operation no.  94 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  95 is a -4 axis
+ symaxes : the symmetry operation no.  96 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  97 is a pure translation
+ symspgr : the symmetry operation no.  98 is an inversion
+ symaxes : the symmetry operation no.  99 is a 2-axis
+ symplanes : the symmetry operation no. 100 is a d plane
+ symaxes : the symmetry operation no. 101 is a 2_1-axis
+ symplanes : the symmetry operation no. 102 is a d plane
+ symaxes : the symmetry operation no. 103 is a 2_1-axis
+ symplanes : the symmetry operation no. 104 is a d plane
+ symplanes : the symmetry operation no. 105 is a tertiary m plane
+ symaxes : the symmetry operation no. 106 is a 2-axis
+ symspgr : the symmetry operation no. 107 is a -4 axis
+ symaxes : the symmetry operation no. 108 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 109 is a tertiary m plane
+ symaxes : the symmetry operation no. 110 is a 2_1-axis
+ symspgr : the symmetry operation no. 111 is a -4 axis
+ symaxes : the symmetry operation no. 112 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no. 113 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 114 is a -3 axis
+ symaxes : the symmetry operation no. 115 is a 3-axis
+ symspgr : the symmetry operation no. 116 is a -3 axis
+ symaxes : the symmetry operation no. 117 is a 3-axis
+ symspgr : the symmetry operation no. 118 is a -3 axis
+ symaxes : the symmetry operation no. 119 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 120 is a -3 axis
+ symplanes : the symmetry operation no. 121 is a tertiary m plane
+ symaxes : the symmetry operation no. 122 is a 2-axis
+ symspgr : the symmetry operation no. 123 is a -4 axis
+ symaxes : the symmetry operation no. 124 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 125 is a -4 axis
+ symaxes : the symmetry operation no. 126 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 127 is a tertiary m plane
+ symaxes : the symmetry operation no. 128 is a 2_1-axis
+ symaxes : the symmetry operation no. 129 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 130 is a -3 axis
+ symaxes : the symmetry operation no. 131 is a 3-axis
+ symspgr : the symmetry operation no. 132 is a -3 axis
+ symaxes : the symmetry operation no. 133 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 134 is a -3 axis
+ symaxes : the symmetry operation no. 135 is a 3-axis
+ symspgr : the symmetry operation no. 136 is a -3 axis
+ symplanes : the symmetry operation no. 137 is a tertiary m plane
+ symaxes : the symmetry operation no. 138 is a 2-axis
+ symplanes : the symmetry operation no. 139 is a mirror plane
+ symaxes : the symmetry operation no. 140 is a 2_1-axis
+ symspgr : the symmetry operation no. 141 is a -4 axis
+ symaxes : the symmetry operation no. 142 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 143 is a -4 axis
+ symaxes : the symmetry operation no. 144 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 145 is a pure translation
+ symspgr : the symmetry operation no. 146 is an inversion
+ symaxes : the symmetry operation no. 147 is a 2_1-axis
+ symplanes : the symmetry operation no. 148 is a d plane
+ symaxes : the symmetry operation no. 149 is a 2-axis
+ symplanes : the symmetry operation no. 150 is a d plane
+ symaxes : the symmetry operation no. 151 is a 2_1-axis
+ symplanes : the symmetry operation no. 152 is a d plane
+ symplanes : the symmetry operation no. 153 is a tertiary m plane
+ symaxes : the symmetry operation no. 154 is a 2_1-axis
+ symspgr : the symmetry operation no. 155 is a -4 axis
+ symaxes : the symmetry operation no. 156 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 157 is a mirror plane
+ symaxes : the symmetry operation no. 158 is a 2-axis
+ symspgr : the symmetry operation no. 159 is a -4 axis
+ symaxes : the symmetry operation no. 160 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no. 161 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 162 is a -3 axis
+ symaxes : the symmetry operation no. 163 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 164 is a -3 axis
+ symaxes : the symmetry operation no. 165 is a 3-axis
+ symspgr : the symmetry operation no. 166 is a -3 axis
+ symaxes : the symmetry operation no. 167 is a 3-axis
+ symspgr : the symmetry operation no. 168 is a -3 axis
+ symplanes : the symmetry operation no. 169 is a tertiary m plane
+ symaxes : the symmetry operation no. 170 is a 2-axis
+ symspgr : the symmetry operation no. 171 is a -4 axis
+ symaxes : the symmetry operation no. 172 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 173 is a -4 axis
+ symaxes : the symmetry operation no. 174 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 175 is a tertiary m plane
+ symaxes : the symmetry operation no. 176 is a 2_1-axis
+ symaxes : the symmetry operation no. 177 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 178 is a -3 axis
+ symaxes : the symmetry operation no. 179 is a 3-axis
+ symspgr : the symmetry operation no. 180 is a -3 axis
+ symaxes : the symmetry operation no. 181 is a 3-axis
+ symspgr : the symmetry operation no. 182 is a -3 axis
+ symaxes : the symmetry operation no. 183 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 184 is a -3 axis
+ symplanes : the symmetry operation no. 185 is a tertiary m plane
+ symaxes : the symmetry operation no. 186 is a 2_1-axis
+ symplanes : the symmetry operation no. 187 is a tertiary m plane
+ symaxes : the symmetry operation no. 188 is a 2-axis
+ symspgr : the symmetry operation no. 189 is a -4 axis
+ symaxes : the symmetry operation no. 190 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 191 is a -4 axis
+ symaxes : the symmetry operation no. 192 is a 4_1 or 4_3-axis
+ symspgr : spgroup= 227  Fd -3 m   (=Oh^7)
+ getkgrid : length of smallest supercell vector (bohr)=    2.889804E+01
+       Simple Lattice Grid
+ symkpt : found identity, with number  1
+
+ invars1m : enter jdtset=     2
+ invars1 : treat image number     1
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+  xred   is defined in input file
+ ingeo : takes atomic coordinates from input array xred
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+
+ symlatt : the Bravais lattice is cF (face-centered cubic)
+ symspgr : the symmetry operation no.   1 is the identity
+ symspgr : the symmetry operation no.   2 is an inversion
+ symaxes : the symmetry operation no.   3 is a 2-axis
+ symplanes : the symmetry operation no.   4 is a d plane
+ symaxes : the symmetry operation no.   5 is a 2-axis
+ symplanes : the symmetry operation no.   6 is a d plane
+ symaxes : the symmetry operation no.   7 is a 2-axis
+ symplanes : the symmetry operation no.   8 is a d plane
+ symplanes : the symmetry operation no.   9 is a mirror plane
+ symaxes : the symmetry operation no.  10 is a 2_1-axis
+ symspgr : the symmetry operation no.  11 is a -4 axis
+ symaxes : the symmetry operation no.  12 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  13 is a mirror plane
+ symaxes : the symmetry operation no.  14 is a 2-axis
+ symspgr : the symmetry operation no.  15 is a -4 axis
+ symaxes : the symmetry operation no.  16 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no.  17 is a 3-axis
+ symspgr : the symmetry operation no.  18 is a -3 axis
+ symaxes : the symmetry operation no.  19 is a 3-axis
+ symspgr : the symmetry operation no.  20 is a -3 axis
+ symaxes : the symmetry operation no.  21 is a 3-axis
+ symspgr : the symmetry operation no.  22 is a -3 axis
+ symaxes : the symmetry operation no.  23 is a 3-axis
+ symspgr : the symmetry operation no.  24 is a -3 axis
+ symplanes : the symmetry operation no.  25 is a mirror plane
+ symaxes : the symmetry operation no.  26 is a 2_1-axis
+ symspgr : the symmetry operation no.  27 is a -4 axis
+ symaxes : the symmetry operation no.  28 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  29 is a -4 axis
+ symaxes : the symmetry operation no.  30 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  31 is a mirror plane
+ symaxes : the symmetry operation no.  32 is a 2-axis
+ symaxes : the symmetry operation no.  33 is a 3-axis
+ symspgr : the symmetry operation no.  34 is a -3 axis
+ symaxes : the symmetry operation no.  35 is a 3-axis
+ symspgr : the symmetry operation no.  36 is a -3 axis
+ symaxes : the symmetry operation no.  37 is a 3-axis
+ symspgr : the symmetry operation no.  38 is a -3 axis
+ symaxes : the symmetry operation no.  39 is a 3-axis
+ symspgr : the symmetry operation no.  40 is a -3 axis
+ symplanes : the symmetry operation no.  41 is a mirror plane
+ symaxes : the symmetry operation no.  42 is a 2-axis
+ symplanes : the symmetry operation no.  43 is a mirror plane
+ symaxes : the symmetry operation no.  44 is a 2_1-axis
+ symspgr : the symmetry operation no.  45 is a -4 axis
+ symaxes : the symmetry operation no.  46 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  47 is a -4 axis
+ symaxes : the symmetry operation no.  48 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  49 is a pure translation
+ symspgr : the symmetry operation no.  50 is an inversion
+ symaxes : the symmetry operation no.  51 is a 2_1-axis
+ symplanes : the symmetry operation no.  52 is a d plane
+ symaxes : the symmetry operation no.  53 is a 2_1-axis
+ symplanes : the symmetry operation no.  54 is a d plane
+ symaxes : the symmetry operation no.  55 is a 2-axis
+ symplanes : the symmetry operation no.  56 is a d plane
+ symplanes : the symmetry operation no.  57 is a tertiary m plane
+ symaxes : the symmetry operation no.  58 is a 2-axis
+ symspgr : the symmetry operation no.  59 is a -4 axis
+ symaxes : the symmetry operation no.  60 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  61 is a tertiary m plane
+ symaxes : the symmetry operation no.  62 is a 2_1-axis
+ symspgr : the symmetry operation no.  63 is a -4 axis
+ symaxes : the symmetry operation no.  64 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no.  65 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  66 is a -3 axis
+ symaxes : the symmetry operation no.  67 is a 3-axis
+ symspgr : the symmetry operation no.  68 is a -3 axis
+ symaxes : the symmetry operation no.  69 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  70 is a -3 axis
+ symaxes : the symmetry operation no.  71 is a 3-axis
+ symspgr : the symmetry operation no.  72 is a -3 axis
+ symplanes : the symmetry operation no.  73 is a tertiary m plane
+ symaxes : the symmetry operation no.  74 is a 2_1-axis
+ symspgr : the symmetry operation no.  75 is a -4 axis
+ symaxes : the symmetry operation no.  76 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  77 is a -4 axis
+ symaxes : the symmetry operation no.  78 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no.  79 is a mirror plane
+ symaxes : the symmetry operation no.  80 is a 2-axis
+ symaxes : the symmetry operation no.  81 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  82 is a -3 axis
+ symaxes : the symmetry operation no.  83 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no.  84 is a -3 axis
+ symaxes : the symmetry operation no.  85 is a 3-axis
+ symspgr : the symmetry operation no.  86 is a -3 axis
+ symaxes : the symmetry operation no.  87 is a 3-axis
+ symspgr : the symmetry operation no.  88 is a -3 axis
+ symplanes : the symmetry operation no.  89 is a tertiary m plane
+ symaxes : the symmetry operation no.  90 is a 2_1-axis
+ symplanes : the symmetry operation no.  91 is a tertiary m plane
+ symaxes : the symmetry operation no.  92 is a 2-axis
+ symspgr : the symmetry operation no.  93 is a -4 axis
+ symaxes : the symmetry operation no.  94 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  95 is a -4 axis
+ symaxes : the symmetry operation no.  96 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no.  97 is a pure translation
+ symspgr : the symmetry operation no.  98 is an inversion
+ symaxes : the symmetry operation no.  99 is a 2-axis
+ symplanes : the symmetry operation no. 100 is a d plane
+ symaxes : the symmetry operation no. 101 is a 2_1-axis
+ symplanes : the symmetry operation no. 102 is a d plane
+ symaxes : the symmetry operation no. 103 is a 2_1-axis
+ symplanes : the symmetry operation no. 104 is a d plane
+ symplanes : the symmetry operation no. 105 is a tertiary m plane
+ symaxes : the symmetry operation no. 106 is a 2-axis
+ symspgr : the symmetry operation no. 107 is a -4 axis
+ symaxes : the symmetry operation no. 108 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 109 is a tertiary m plane
+ symaxes : the symmetry operation no. 110 is a 2_1-axis
+ symspgr : the symmetry operation no. 111 is a -4 axis
+ symaxes : the symmetry operation no. 112 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no. 113 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 114 is a -3 axis
+ symaxes : the symmetry operation no. 115 is a 3-axis
+ symspgr : the symmetry operation no. 116 is a -3 axis
+ symaxes : the symmetry operation no. 117 is a 3-axis
+ symspgr : the symmetry operation no. 118 is a -3 axis
+ symaxes : the symmetry operation no. 119 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 120 is a -3 axis
+ symplanes : the symmetry operation no. 121 is a tertiary m plane
+ symaxes : the symmetry operation no. 122 is a 2-axis
+ symspgr : the symmetry operation no. 123 is a -4 axis
+ symaxes : the symmetry operation no. 124 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 125 is a -4 axis
+ symaxes : the symmetry operation no. 126 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 127 is a tertiary m plane
+ symaxes : the symmetry operation no. 128 is a 2_1-axis
+ symaxes : the symmetry operation no. 129 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 130 is a -3 axis
+ symaxes : the symmetry operation no. 131 is a 3-axis
+ symspgr : the symmetry operation no. 132 is a -3 axis
+ symaxes : the symmetry operation no. 133 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 134 is a -3 axis
+ symaxes : the symmetry operation no. 135 is a 3-axis
+ symspgr : the symmetry operation no. 136 is a -3 axis
+ symplanes : the symmetry operation no. 137 is a tertiary m plane
+ symaxes : the symmetry operation no. 138 is a 2-axis
+ symplanes : the symmetry operation no. 139 is a mirror plane
+ symaxes : the symmetry operation no. 140 is a 2_1-axis
+ symspgr : the symmetry operation no. 141 is a -4 axis
+ symaxes : the symmetry operation no. 142 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 143 is a -4 axis
+ symaxes : the symmetry operation no. 144 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 145 is a pure translation
+ symspgr : the symmetry operation no. 146 is an inversion
+ symaxes : the symmetry operation no. 147 is a 2_1-axis
+ symplanes : the symmetry operation no. 148 is a d plane
+ symaxes : the symmetry operation no. 149 is a 2-axis
+ symplanes : the symmetry operation no. 150 is a d plane
+ symaxes : the symmetry operation no. 151 is a 2_1-axis
+ symplanes : the symmetry operation no. 152 is a d plane
+ symplanes : the symmetry operation no. 153 is a tertiary m plane
+ symaxes : the symmetry operation no. 154 is a 2_1-axis
+ symspgr : the symmetry operation no. 155 is a -4 axis
+ symaxes : the symmetry operation no. 156 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 157 is a mirror plane
+ symaxes : the symmetry operation no. 158 is a 2-axis
+ symspgr : the symmetry operation no. 159 is a -4 axis
+ symaxes : the symmetry operation no. 160 is a 4_1 or 4_3-axis
+ symaxes : the symmetry operation no. 161 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 162 is a -3 axis
+ symaxes : the symmetry operation no. 163 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 164 is a -3 axis
+ symaxes : the symmetry operation no. 165 is a 3-axis
+ symspgr : the symmetry operation no. 166 is a -3 axis
+ symaxes : the symmetry operation no. 167 is a 3-axis
+ symspgr : the symmetry operation no. 168 is a -3 axis
+ symplanes : the symmetry operation no. 169 is a tertiary m plane
+ symaxes : the symmetry operation no. 170 is a 2-axis
+ symspgr : the symmetry operation no. 171 is a -4 axis
+ symaxes : the symmetry operation no. 172 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 173 is a -4 axis
+ symaxes : the symmetry operation no. 174 is a 4_1 or 4_3-axis
+ symplanes : the symmetry operation no. 175 is a tertiary m plane
+ symaxes : the symmetry operation no. 176 is a 2_1-axis
+ symaxes : the symmetry operation no. 177 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 178 is a -3 axis
+ symaxes : the symmetry operation no. 179 is a 3-axis
+ symspgr : the symmetry operation no. 180 is a -3 axis
+ symaxes : the symmetry operation no. 181 is a 3-axis
+ symspgr : the symmetry operation no. 182 is a -3 axis
+ symaxes : the symmetry operation no. 183 is a 3, 3_1 or 3_2 axis
+ symspgr : the symmetry operation no. 184 is a -3 axis
+ symplanes : the symmetry operation no. 185 is a tertiary m plane
+ symaxes : the symmetry operation no. 186 is a 2_1-axis
+ symplanes : the symmetry operation no. 187 is a tertiary m plane
+ symaxes : the symmetry operation no. 188 is a 2-axis
+ symspgr : the symmetry operation no. 189 is a -4 axis
+ symaxes : the symmetry operation no. 190 is a 4_1 or 4_3-axis
+ symspgr : the symmetry operation no. 191 is a -4 axis
+ symaxes : the symmetry operation no. 192 is a 4_1 or 4_3-axis
+ symspgr : spgroup= 227  Fd -3 m   (=Oh^7)
+ getkgrid : length of smallest supercell vector (bohr)=    2.889804E+01
+       Simple Lattice Grid
+ symkpt : found identity, with number  1
+ getkgrid : length of smallest supercell vector (bohr)=    2.889804E+01
+       Simple Lattice Grid
+ symkpt : found identity, with number  1
+  dtset%nelect=   8.0000000000000000     
+ chkneu : initialized the occupation numbers for occopt=    1
+    spin-unpolarized case :
+  2.00  2.00  2.00  2.00  0.00  0.00  0.00
+ setshells : ecut_trial =     8.00
+
+ m_gsphere.F90:2707:WARNING
+  The value ecutwfn=  0.800000E+01 given in the input file leads to
+ the same values for nshwfn and npwwfn as ecutwfn=  0.756385E+01
+ This value will be adopted for the calculation.
+
+ setshells : ecut_trial =     2.00
+
+ m_gsphere.F90:2707:WARNING
+  The value ecuteps=  0.200000E+01 given in the input file leads to
+ the same values for nsheps and npweps as ecuteps=  0.151277E+01
+ This value will be adopted for the calculation.
+
+
+ m_gsphere.F90:2588:COMMENT
+  One of the three variables ecutsigx, npwsigx, or nshsigx
+ must be non-null. Returning.
+ getkgrid : length of smallest supercell vector (bohr)=    2.889804E+01
+       Simple Lattice Grid
+ symkpt : found identity, with number  1
+  dtset%nelect=   8.0000000000000000     
+ chkneu : initialized the occupation numbers for occopt=    1
+    spin-unpolarized case :
+  2.00  2.00  2.00  2.00  0.00  0.00  0.00
+ setshells : ecut_trial =     8.00
+
+ m_gsphere.F90:2707:WARNING
+  The value ecutwfn=  0.800000E+01 given in the input file leads to
+ the same values for nshwfn and npwwfn as ecutwfn=  0.756385E+01
+ This value will be adopted for the calculation.
+
+ setshells : ecut_trial =     3.00
+
+ m_gsphere.F90:2707:WARNING
+  The value ecuteps=  0.300000E+01 given in the input file leads to
+ the same values for nsheps and npweps as ecuteps=  0.226916E+01
+ This value will be adopted for the calculation.
+
+
+ m_gsphere.F90:2588:COMMENT
+  One of the three variables ecutsigx, npwsigx, or nshsigx
+ must be non-null. Returning.
+  mpi_setup : enter 
+ mpi_setup1: mkmem  undefined in the input file. Use default mkmem  = nkpt
+ mpi_setup1: With nkpt_me=   64 and mkmem  =    64, ground state wf handled in core.
+ mpi_setup1: mkqmem undefined in the input file. Use default mkqmem = nkpt
+ mpi_setup1: With nkpt_me=   64 and mkqmem =    64, ground state wf handled in core.
+ mpi_setup1: mk1mem undefined in the input file. Use default mk1mem = nkpt
+ mpi_setup1: With nkpt_me=   64 and mk1mem =    64, ground state wf handled in core.
+ For input ecut=  7.563851E+00 best grid ngfft=      18      18      18
+       max ecut=  7.705673E+00
+
+ ==== FFT mesh ====
+  FFT mesh divisions ........................    18   18   18
+  Augmented FFT divisions ...................    19   19   18
+  FFT algorithm .............................   112
+  FFT cache size ............................    16
+ getmpw: optimal value of mpw=     278
+ mpi_setup1: mkmem  undefined in the input file. Use default mkmem  = nkpt
+ mpi_setup1: With nkpt_me=   64 and mkmem  =    64, ground state wf handled in core.
+ mpi_setup1: mkqmem undefined in the input file. Use default mkqmem = nkpt
+ mpi_setup1: With nkpt_me=   64 and mkqmem =    64, ground state wf handled in core.
+ mpi_setup1: mk1mem undefined in the input file. Use default mk1mem = nkpt
+ mpi_setup1: With nkpt_me=   64 and mk1mem =    64, ground state wf handled in core.
+ For input ecut=  7.563851E+00 best grid ngfft=      18      18      18
+       max ecut=  7.705673E+00
+
+ ==== FFT mesh ====
+  FFT mesh divisions ........................    18   18   18
+  Augmented FFT divisions ...................    19   19   18
+  FFT algorithm .............................   112
+  FFT cache size ............................    16
+ getmpw: optimal value of mpw=     278
+
+ DATASET    1 : space group Fd -3 m (#227); Bravais cF (face-center cubic)
+
+ getdim_nloc : deduce lmnmax  =   4, lnmax  =   2,
+                      lmnmaxso=   4, lnmaxso=   2.
+ setmqgrid : COMMENT -
+  The number of points "mqgrid" in reciprocal space used for the
+  description of the pseudopotentials has been set automatically
+  by abinit to :     3001.
+ memory : analysis of memory needs
+================================================================================
+ Values of the parameters that define the memory need for DATASET  1.
+   intxc =         0  ionmov =         0    iscf =         7 xclevel =         1
+  lmnmax =         2   lnmax =         2   mband =         7  mffmem =         1
+P  mgfft =        18   mkmem =        64 mpssoang=         3     mpw =       278
+  mqgrid =      3001   natom =         2    nfft =      5832    nkpt =        64
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =      2501  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       4.422 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      1.902 Mbytes ; DEN or POT disk file :      0.046 Mbytes.
+================================================================================
+
+ Biggest array : cg(disk), with      1.9024 MBytes.
+ memana : allocated an array of      1.902 Mbytes, for testing purposes.
+ memana : allocated       4.422 Mbytes, for testing purposes.
+ The job will continue.
+
+ DATASET    2 : space group Fd -3 m (#227); Bravais cF (face-center cubic)
+
+ getdim_nloc : deduce lmnmax  =   4, lnmax  =   2,
+                      lmnmaxso=   4, lnmaxso=   2.
+ setmqgrid : COMMENT -
+  The number of points "mqgrid" in reciprocal space used for the
+  description of the pseudopotentials has been set automatically
+  by abinit to :     3001.
+ memory : analysis of memory needs
+================================================================================
+ Values of the parameters that define the memory need for DATASET  2.
+   intxc =         0  ionmov =         0    iscf =         7 xclevel =         1
+  lmnmax =         2   lnmax =         2   mband =         7  mffmem =         1
+P  mgfft =        18   mkmem =        64 mpssoang=         3     mpw =       278
+  mqgrid =      3001   natom =         2    nfft =      5832    nkpt =        64
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =      2501  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       4.422 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      1.902 Mbytes ; DEN or POT disk file :      0.046 Mbytes.
+================================================================================
+
+ Biggest array : cg(disk), with      1.9024 MBytes.
+ memana : allocated an array of      1.902 Mbytes, for testing purposes.
+ memana : allocated       4.422 Mbytes, for testing purposes.
+ The job will continue.
+--------------------------------------------------------------------------------
+------------- Echo of variables that govern the present computation ------------
+--------------------------------------------------------------------------------
+-
+- outvars: echo of selected default values                                      
+-   accesswff0 =  0 , fftalg0 =112 , wfoptalg0 =  0
+-
+- outvars: echo of global parameters not present in the input file              
+-  max_nthreads =    0
+-
+ -outvars: echo values of preprocessed input variables --------
+ 
+ These variables are accessible in NetCDF format (tbs_4o_OUT.nc)
+
+            acell      1.0217000000E+01  1.0217000000E+01  1.0217000000E+01 Bohr
+              amu      2.80855000E+01
+     bs_algorithm           2
+      bs_coupling           0
+     bs_freq_mesh      0.00000000E+00  2.20495952E-01  7.34986508E-04 Hartree
+   bs_haydock_tol      5.00000000E-02  0.00000000E+00
+        bs_loband        2
+      chksymbreak           0
+           diemac      1.20000000E+01
+             ecut      7.56385066E+00 Hartree
+          ecuteps1     1.51277013E+00 Hartree
+          ecuteps2     2.26915520E+00 Hartree
+          ecutwfn      7.56385066E+00 Hartree
+         icutcoul           3
+          inclvkb           2
+           irdscr           1
+           irdwfk           1
+           jdtset        1    2
+              kpt      2.75000000E-02  5.25000000E-02  7.75000000E-02
+                       2.77500000E-01  5.25000000E-02  7.75000000E-02
+                      -4.72500000E-01  5.25000000E-02  7.75000000E-02
+                      -2.22500000E-01  5.25000000E-02  7.75000000E-02
+                       2.75000000E-02  3.02500000E-01  7.75000000E-02
+                       2.77500000E-01  3.02500000E-01  7.75000000E-02
+                      -4.72500000E-01  3.02500000E-01  7.75000000E-02
+                      -2.22500000E-01  3.02500000E-01  7.75000000E-02
+                       2.75000000E-02 -4.47500000E-01  7.75000000E-02
+                       2.77500000E-01 -4.47500000E-01  7.75000000E-02
+                      -4.72500000E-01 -4.47500000E-01  7.75000000E-02
+                      -2.22500000E-01 -4.47500000E-01  7.75000000E-02
+                       2.75000000E-02 -1.97500000E-01  7.75000000E-02
+                       2.77500000E-01 -1.97500000E-01  7.75000000E-02
+                      -4.72500000E-01 -1.97500000E-01  7.75000000E-02
+                      -2.22500000E-01 -1.97500000E-01  7.75000000E-02
+                       2.75000000E-02  5.25000000E-02  3.27500000E-01
+                       2.77500000E-01  5.25000000E-02  3.27500000E-01
+                      -4.72500000E-01  5.25000000E-02  3.27500000E-01
+                      -2.22500000E-01  5.25000000E-02  3.27500000E-01
+                       2.75000000E-02  3.02500000E-01  3.27500000E-01
+                       2.77500000E-01  3.02500000E-01  3.27500000E-01
+                      -4.72500000E-01  3.02500000E-01  3.27500000E-01
+                      -2.22500000E-01  3.02500000E-01  3.27500000E-01
+                       2.75000000E-02 -4.47500000E-01  3.27500000E-01
+                       2.77500000E-01 -4.47500000E-01  3.27500000E-01
+                      -4.72500000E-01 -4.47500000E-01  3.27500000E-01
+                      -2.22500000E-01 -4.47500000E-01  3.27500000E-01
+                       2.75000000E-02 -1.97500000E-01  3.27500000E-01
+                       2.77500000E-01 -1.97500000E-01  3.27500000E-01
+                      -4.72500000E-01 -1.97500000E-01  3.27500000E-01
+                      -2.22500000E-01 -1.97500000E-01  3.27500000E-01
+                       2.75000000E-02  5.25000000E-02 -4.22500000E-01
+                       2.77500000E-01  5.25000000E-02 -4.22500000E-01
+                      -4.72500000E-01  5.25000000E-02 -4.22500000E-01
+                      -2.22500000E-01  5.25000000E-02 -4.22500000E-01
+                       2.75000000E-02  3.02500000E-01 -4.22500000E-01
+                       2.77500000E-01  3.02500000E-01 -4.22500000E-01
+                      -4.72500000E-01  3.02500000E-01 -4.22500000E-01
+                      -2.22500000E-01  3.02500000E-01 -4.22500000E-01
+                       2.75000000E-02 -4.47500000E-01 -4.22500000E-01
+                       2.77500000E-01 -4.47500000E-01 -4.22500000E-01
+                      -4.72500000E-01 -4.47500000E-01 -4.22500000E-01
+                      -2.22500000E-01 -4.47500000E-01 -4.22500000E-01
+                       2.75000000E-02 -1.97500000E-01 -4.22500000E-01
+                       2.77500000E-01 -1.97500000E-01 -4.22500000E-01
+                      -4.72500000E-01 -1.97500000E-01 -4.22500000E-01
+                      -2.22500000E-01 -1.97500000E-01 -4.22500000E-01
+                       2.75000000E-02  5.25000000E-02 -1.72500000E-01
+                       2.77500000E-01  5.25000000E-02 -1.72500000E-01
+                       outvar_i_n : Printing only first  50 k-points.
+         kptrlatt        4    0    0      0    4    0      0    0    4
+          kptrlen      2.88980399E+01
+P           mkmem          64
+            natom           2
+            nband           7
+           ndtset           2
+            ngfft          18      18      18
+             nkpt          64
+           npweps1         27
+           npweps2         59
+           npwwfn         283
+           nsheps1          4
+           nsheps2          6
+            nstep          50
+             nsym          48
+           ntypat           1
+              occ      2.000000  2.000000  2.000000  2.000000  0.000000  0.000000
+                       0.000000
+        optdriver          99
+            rprim      0.0000000000E+00  5.0000000000E-01  5.0000000000E-01
+                       5.0000000000E-01  0.0000000000E+00  5.0000000000E-01
+                       5.0000000000E-01  5.0000000000E-01  0.0000000000E+00
+           shiftk      1.10000000E-01  2.10000000E-01  3.10000000E-01
+          spgroup         227
+           symrel      1  0  0   0  1  0   0  0  1      -1  0  0   0 -1  0   0  0 -1
+                       0 -1  1   0 -1  0   1 -1  0       0  1 -1   0  1  0  -1  1  0
+                      -1  0  0  -1  0  1  -1  1  0       1  0  0   1  0 -1   1 -1  0
+                       0  1 -1   1  0 -1   0  0 -1       0 -1  1  -1  0  1   0  0  1
+                      -1  0  0  -1  1  0  -1  0  1       1  0  0   1 -1  0   1  0 -1
+                       0 -1  1   1 -1  0   0 -1  0       0  1 -1  -1  1  0   0  1  0
+                       1  0  0   0  0  1   0  1  0      -1  0  0   0  0 -1   0 -1  0
+                       0  1 -1   0  0 -1   1  0 -1       0 -1  1   0  0  1  -1  0  1
+                      -1  0  1  -1  1  0  -1  0  0       1  0 -1   1 -1  0   1  0  0
+                       0 -1  0   1 -1  0   0 -1  1       0  1  0  -1  1  0   0  1 -1
+                       1  0 -1   0  0 -1   0  1 -1      -1  0  1   0  0  1   0 -1  1
+                       0  1  0   0  0  1   1  0  0       0 -1  0   0  0 -1  -1  0  0
+                       1  0 -1   0  1 -1   0  0 -1      -1  0  1   0 -1  1   0  0  1
+                       0 -1  0   0 -1  1   1 -1  0       0  1  0   0  1 -1  -1  1  0
+                      -1  0  1  -1  0  0  -1  1  0       1  0 -1   1  0  0   1 -1  0
+                       0  1  0   1  0  0   0  0  1       0 -1  0  -1  0  0   0  0 -1
+                       0  0 -1   0  1 -1   1  0 -1       0  0  1   0 -1  1  -1  0  1
+                       1 -1  0   0 -1  1   0 -1  0      -1  1  0   0  1 -1   0  1  0
+                       0  0  1   1  0  0   0  1  0       0  0 -1  -1  0  0   0 -1  0
+                      -1  1  0  -1  0  0  -1  0  1       1 -1  0   1  0  0   1  0 -1
+                       0  0  1   0  1  0   1  0  0       0  0 -1   0 -1  0  -1  0  0
+                       1 -1  0   0 -1  0   0 -1  1      -1  1  0   0  1  0   0  1 -1
+                       0  0 -1   1  0 -1   0  1 -1       0  0  1  -1  0  1   0 -1  1
+                      -1  1  0  -1  0  1  -1  0  0       1 -1  0   1  0 -1   1  0  0
+            tnons      0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+                       0.0000000  0.0000000  0.0000000     0.2500000  0.2500000  0.2500000
+            typat      1  1
+              wtk        0.01563    0.01563    0.01563    0.01563    0.01563    0.01563
+                         0.01563    0.01563    0.01563    0.01563    0.01563    0.01563
+                         0.01563    0.01563    0.01563    0.01563    0.01563    0.01563
+                         0.01563    0.01563    0.01563    0.01563    0.01563    0.01563
+                         0.01563    0.01563    0.01563    0.01563    0.01563    0.01563
+                         0.01563    0.01563    0.01563    0.01563    0.01563    0.01563
+                         0.01563    0.01563    0.01563    0.01563    0.01563    0.01563
+                         0.01563    0.01563    0.01563    0.01563    0.01563    0.01563
+                         0.01563    0.01563
+                       outvars : Printing only first  50 k-points.
+           xangst      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       1.3516508850E+00  1.3516508850E+00  1.3516508850E+00
+            xcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.5542500000E+00  2.5542500000E+00  2.5542500000E+00
+             xred      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.5000000000E-01  2.5000000000E-01  2.5000000000E-01
+             zcut      5.51239881E-03 Hartree
+            znucl       14.00000
+
+================================================================================
+
+ chkinp: machine precision is   2.2204460492503131E-16
+
+ chkinp: Checking input parameters for consistency, jdtset=   1.
+
+ chkinp: Checking input parameters for consistency, jdtset=   2.
+ DATA TYPE INFORMATION: 
+ REAL:      Data type name: REAL(DP) 
+            Kind value:      8
+            Precision:      15
+            Smallest nonnegligible quantity relative to 1:  0.22204460E-15
+            Smallest positive number:                       0.22250739-307
+            Largest representable number:                   0.17976931+309
+ INTEGER:   Data type name: INTEGER(default) 
+            Kind value: 4
+            Bit size:   32
+            Largest representable number: 2147483647
+ LOGICAL:   Data type name: LOGICAL 
+            Kind value: 4
+ CHARACTER: Data type name: CHARACTER             Kind value: 1
+  ==== Using MPI-1 specifications ==== 
+  MPI-IO support is OFF
+  xmpi_tag_ub ................   2147483647
+  xmpi_bsize_ch ..............            1
+  xmpi_bsize_int .............            4
+  xmpi_bsize_sp ..............            4
+  xmpi_bsize_dp ..............            8
+  xmpi_bsize_spc .............            8
+  xmpi_bsize_dpc .............           16
+  xmpio_bsize_frm ............            0
+  xmpi_address_kind ..........            8
+  xmpi_offset_kind ...........            8
+  MPI_WTICK ..................    5.7018069026074364E-007
+
+
+ chkvars.F90:334:ERROR
+   Found the token MBPT_SCISS in the input file.
+  This name is not one of the registered input variable names (see the Web list of input variables).
+  Action : check your input file. You likely mistyped the input variable.
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ === Build Information === 
+  Version       : 7.4.3
+  Build target  : i686_cygwin_gnu4.7
+  Build date    : 20131019
+
+ === Compiler Suite === 
+  C compiler       : gnu
+  CFLAGS           : -mfpmath=sse -msse2 -O2 -Wstrict-aliasing=2 -static
+  C++ compiler     : gnu4.7
+  CXXFLAGS         : -mfpmath=sse -msse2 -O2 -Wstrict-aliasing=2 -static
+  Fortran compiler : gnu4.7
+  FCFLAGS          : -mfpmath=sse -msse2 -O2 -ffree-line-length-none -Wstrict-aliasing=2 -static
+  FC_LDFLAGS       : 
+
+ === Optimizations === 
+  Debug level        : no
+  Optimization level : standard
+  Architecture       : _
+
+ === MPI === 
+  Parallel build : yes
+  Parallel I/O   : no
+  Time tracing   : no
+  GPU support    : no
+
+ === Connectors / Fallbacks === 
+  Connectors on : yes
+  Fallbacks on  : yes
+  DFT flavor    : libxc+atompaw+bigdft+wannier90
+  FFT flavor    : none
+  LINALG flavor : netlib
+  MATH flavor   : none
+  TIMER flavor  : abinit
+  TRIO flavor   : netcdf+etsf_io
+
+ === Experimental features === 
+  Bindings            : no
+  Exports             : no
+  GW double-precision : yes
+
+ === Bazaar branch information === 
+  Branch ID : xavier.gonze@uclouvain.be-20131019063522-8wupmx7xtg5stywd
+  Revision  : 490
+  Committed : 0
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ chkvars.F90:334:ERROR
+   Found the token MBPT_SCISS in the input file.
+  This name is not one of the registered input variable names (see the Web list of input variables).
+  Action : check your input file. You likely mistyped the input variable.
+
+ leave_new : decision taken to exit ...

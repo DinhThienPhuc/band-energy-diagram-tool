@@ -1,0 +1,26 @@
+ Fermi (or HOMO) energy (hartree) =   0.29198   Average Vxc (hartree)=  -0.34963
+ Eigenvalues (hartree) for nkpt=  12  k points:
+ kpt#   1, nband=  4, wtk=  0.06250, kpt=  0.0000  0.1250  0.1250 (reduced coord)
+  -0.11517   0.13416   0.30478   0.37416
+ kpt#   2, nband=  4, wtk=  0.06250, kpt=  0.0000  0.3750  0.1250 (reduced coord)
+  -0.03009   0.13548   0.21579   0.37478
+ kpt#   3, nband=  4, wtk=  0.12500, kpt=  0.1250  0.2500  0.1250 (reduced coord)
+  -0.07242   0.17439   0.25512   0.34593
+ kpt#   4, nband=  4, wtk=  0.06250, kpt=  0.1250  0.5000  0.1250 (reduced coord)
+   0.05351   0.05351   0.29540   0.29540
+ kpt#   5, nband=  4, wtk=  0.12500, kpt=  0.2500  0.3750  0.1250 (reduced coord)
+   0.01185   0.17439   0.25512   0.34593
+ kpt#   6, nband=  4, wtk=  0.06250, kpt=  0.3750  0.5000  0.1250 (reduced coord)
+   0.13416   0.13416   0.30478   0.30478
+ kpt#   7, nband=  4, wtk=  0.06250, kpt=  0.0000  0.1250  0.3750 (reduced coord)
+  -0.07242   0.01185   0.41184   0.49055
+ kpt#   8, nband=  4, wtk=  0.06250, kpt=  0.0000  0.3750  0.3750 (reduced coord)
+   0.01192   0.09468   0.17738   0.25786
+ kpt#   9, nband=  4, wtk=  0.12500, kpt=  0.1250  0.2500  0.3750 (reduced coord)
+  -0.03009   0.05351   0.29540   0.37478
+ kpt#  10, nband=  4, wtk=  0.06250, kpt=  0.1250  0.5000  0.3750 (reduced coord)
+   0.09468   0.09468   0.17738   0.17738
+ kpt#  11, nband=  4, wtk=  0.12500, kpt=  0.2500  0.3750  0.3750 (reduced coord)
+   0.05351   0.13548   0.21579   0.29540
+ kpt#  12, nband=  4, wtk=  0.06250, kpt=  0.3750  0.5000  0.3750 (reduced coord)
+   0.17439   0.17439   0.25512   0.25512
