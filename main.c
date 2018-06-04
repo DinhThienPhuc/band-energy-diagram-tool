@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include <regex.h>
 
 #define BUF_SIZE 8192
 #define PATTERN "^[^a-zA-Z]+$"
+#define DEFAULT_COLS 8
 
 int match(const char *string, char *pattern)
 {
@@ -27,8 +29,7 @@ int match(const char *string, char *pattern)
 int main(int argc, char *argv[])
 {
     FILE *fp;
-    FILE *fw = fopen("origin.txt", "w");
-    FILE *fwConverted = fopen("out.txt", "w");
+    FILE *fw = fopen("tbs_1o_DS2_EIG.txt", "w");
     char buf[BUF_SIZE];
     if (argc != 2)
     {
@@ -75,7 +76,7 @@ int main(int argc, char *argv[])
                     j++;
                 }
             }
-            int start = ctr == 8 ? 1 : 0;
+            int start = 0 == line ? 0 : 1;
             // Push parse number to data array
             for (int k = start; k <= ctr; k++)
             {
@@ -85,37 +86,44 @@ int main(int argc, char *argv[])
                     perror("Cannot create file to write!");
                     return 1;
                 }
-                int row = start == 1 ? k - 1 : k;
-                int col = line;
-                result[row][col] = num;
-                if (ctr == k)
-                {
-                    fprintf(fw, "%6.3f\n", num);
-                }
-                else
-                {
-                    fprintf(fw, "%6.3f  ", num);
-                }
+                int col = start == 1 ? k - 1 : k;
+                result[line][col] = num;
             }
             line++;
         }
     }
+
+    int counter = 1;
+    int nBand = 105;
+    int groupLines = nBand / DEFAULT_COLS + 1;
+    printf("acccc: %d\n", groupLines);
     /* output each array element's value */
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < line; i++)
     {
-        for (int j = 0; j < line; j++)
+        for (int j = 0; j < DEFAULT_COLS; j++)
         {
-            // printf("a[%d][%d] = %f\n", i, j, result[i][j]);
-            if (line - 1 == j)
+            int currentLine = i + 1;
+            if (0 == currentLine % groupLines && DEFAULT_COLS - 1 == j)
             {
-                fprintf(fwConverted, "%6.3f\n", result[i][j]);
+                fprintf(fw, "%6.3f\n", result[i][j]);
             }
             else
             {
-                fprintf(fwConverted, "%6.3f  ", result[i][j]);
+                fprintf(fw, "%6.3f  ", result[i][j]);
             }
+
+            // printf("a[%d][%d] = %f\n", i, j, result[i][j]);
+            // if (DEFAULT_COLS - 1 == j)
+            // {
+            //     fprintf(fw, "%6.3f\n", result[i][j]);
+            // }
+            // else
+            // {
+            //     fprintf(fw, "%6.3f  ", result[i][j]);
+            // }
         }
     }
+
     fclose(fw);
     fclose(fp);
     return 0;
