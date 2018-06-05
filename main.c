@@ -29,7 +29,7 @@ int match(const char *string, char *pattern)
 int main(int argc, char *argv[])
 {
     FILE *fp;
-    FILE *fw = fopen("out.txt", "w");
+    FILE *fw = fopen("tbase3_xo_DS2_EIG.txt", "w");
     int nBand = 8;
     char buf[BUF_SIZE];
     if (argc != 2)
