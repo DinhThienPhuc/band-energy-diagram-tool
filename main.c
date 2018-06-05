@@ -29,8 +29,8 @@ int match(const char *string, char *pattern)
 int main(int argc, char *argv[])
 {
     FILE *fp;
-    FILE *fw = fopen("tbs_1o_DS3_EIG.txt", "w");
-    int nBand = 15;
+    FILE *fw = fopen("out.txt", "w");
+    int nBand = 8;
     char buf[BUF_SIZE];
     if (argc != 2)
     {
