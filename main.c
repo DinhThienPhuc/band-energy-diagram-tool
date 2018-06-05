@@ -29,7 +29,8 @@ int match(const char *string, char *pattern)
 int main(int argc, char *argv[])
 {
     FILE *fp;
-    FILE *fw = fopen("tbs_1o_DS2_EIG.txt", "w");
+    FILE *fw = fopen("tbs_1o_DS3_EIG.txt", "w");
+    int nBand = 15;
     char buf[BUF_SIZE];
     if (argc != 2)
     {
@@ -44,16 +45,13 @@ int main(int argc, char *argv[])
     }
     int line = 0;
     char newString[100][100];
-    double result[100][100];
+    double result[100][nBand];
     while (fgets(buf, sizeof(buf), fp) != NULL)
     {
         buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
         if (1 == match(buf, PATTERN))
         {
-            // Split number and push into each array
             int i, j, ctr = 0;
-
-            // Split string into words aka numbers
             for (int i = 0; i < strlen(buf); i++)
             {
                 if (buf[i] == ' ' || buf[i] == '\0')
@@ -77,7 +75,6 @@ int main(int argc, char *argv[])
                 }
             }
             int start = 0 == line ? 0 : 1;
-            // Push parse number to data array
             for (int k = start; k <= ctr; k++)
             {
                 double num = strtod(newString[k], NULL);
@@ -94,36 +91,26 @@ int main(int argc, char *argv[])
     }
 
     int counter = 1;
-    int nBand = 105;
-    int groupLines = nBand / DEFAULT_COLS + 1;
-    printf("acccc: %d\n", groupLines);
-    /* output each array element's value */
+    int numbersInLine = nBand < DEFAULT_COLS ? nBand : DEFAULT_COLS;
     for (int i = 0; i < line; i++)
     {
-        for (int j = 0; j < DEFAULT_COLS; j++)
+        for (int j = 0; j < numbersInLine; j++)
         {
-            int currentLine = i + 1;
-            if (0 == currentLine % groupLines && DEFAULT_COLS - 1 == j)
+            if (1 != counter && 1 == counter % nBand)
             {
-                fprintf(fw, "%6.3f\n", result[i][j]);
+                fprintf(fw, "\n");
+            }
+            if (0 != result[i][j])
+            {
+                fprintf(fw, "%6.3f  ", result[i][j]);
+                counter++;
             }
             else
             {
-                fprintf(fw, "%6.3f  ", result[i][j]);
+                counter = 1;
             }
-
-            // printf("a[%d][%d] = %f\n", i, j, result[i][j]);
-            // if (DEFAULT_COLS - 1 == j)
-            // {
-            //     fprintf(fw, "%6.3f\n", result[i][j]);
-            // }
-            // else
-            // {
-            //     fprintf(fw, "%6.3f  ", result[i][j]);
-            // }
         }
     }
-
     fclose(fw);
     fclose(fp);
     return 0;
