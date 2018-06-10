@@ -183,11 +183,15 @@ int main(int argc, char *argv[])
     int numbersInLine = nBand < DEFAULT_COLS ? nBand : DEFAULT_COLS;
     for (int i = 0; i < line; i++)
     {
+        if (0 == i)
+        {
+            fprintf(fw, "ec, ");
+        }
         for (int j = 0; j < numbersInLine; j++)
         {
             if (1 != counter && 1 == counter % nBand)
             {
-                fprintf(fw, "\n");
+                fprintf(fw, "\nec, ");
             }
             if (0 != result[i][j])
             {
