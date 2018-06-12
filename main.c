@@ -28,7 +28,7 @@ int match(const char *string, char *pattern)
     return (1);
 }
 
-char **str_split(char *a_str, const char a_delim)
+char **splitString(char *a_str, const char a_delim)
 {
     char **result = 0;
     size_t count = 0;
@@ -81,7 +81,7 @@ int getNBand(char s1[])
     char **tokens;
     char *params;
     int nBand;
-    tokens = str_split(s1, ',');
+    tokens = splitString(s1, ',');
     for (int i = 0; *(tokens + i); i++)
     {
         if (1 == match(*(tokens + i), "nband"))
@@ -91,7 +91,7 @@ int getNBand(char s1[])
         }
         free(*(tokens + i));
     }
-    tokens = str_split(params, '=');
+    tokens = splitString(params, '=');
     for (int i = 0; *(tokens + i); i++)
     {
         if (1 == match(*(tokens + i), NUMBER_ONLY_PATTERN))
@@ -100,6 +100,7 @@ int getNBand(char s1[])
         }
         free(*(tokens + i));
     }
+    free(params);
     free(tokens);
     return nBand;
 }
@@ -130,6 +131,7 @@ int main(int argc, char *argv[])
     int line = 0, nBandPosition = 0;
     char newString[100][100];
     double result[100][100];
+    char *kPath[100];
     while (fgets(buf, sizeof(buf), fp) != NULL)
     {
         buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
@@ -174,24 +176,58 @@ int main(int argc, char *argv[])
                 }
                 int col = start == 1 ? k - 1 : k;
                 result[line][col] = num;
+                if (0 == line % 8)
+                {
+                    kPath[line] = "Γ";
+                }
             }
             line++;
         }
     }
 
+    // for (int i = 0; i < line; i++)
+    // {
+    //     char *kPoint = kPath[i];
+    //     if (NULL != kPoint)
+    //     {
+    //         printf("    %s\n", kPoint);
+    //     }
+    //     else
+    //     {
+    //         printf("     \n", kPoint);
+    //     }
+    // }
+
     int counter = 1;
+    char space[] = " ";
     int numbersInLine = nBand < DEFAULT_COLS ? nBand : DEFAULT_COLS;
     for (int i = 0; i < line; i++)
     {
+        char *kPoint = kPath[i];
         if (0 == i)
         {
-            fprintf(fw, "ec, ");
+            if (NULL != kPoint)
+            {
+                fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, kPoint, space, space);
+            }
+            else
+            {
+                fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, space, space, space);
+            }
         }
         for (int j = 0; j < numbersInLine; j++)
         {
             if (1 != counter && 1 == counter % nBand)
             {
-                fprintf(fw, "\nec, ");
+                fprintf(fw, "\n");
+                if (NULL != kPoint)
+                {
+                    fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, kPoint, space, space);
+                }
+                else
+                {
+                    fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, space, space, space);
+                }
             }
             if (0 != result[i][j])
             {
@@ -204,6 +240,30 @@ int main(int argc, char *argv[])
             }
         }
     }
+
+    // for (int i = 0; i < line; i++)
+    // {
+    //     if (0 == i)
+    //     {
+    //         fprintf(fw, "Γ, ");
+    //     }
+    //     for (int j = 0; j < numbersInLine; j++)
+    //     {
+    //         if (1 != counter && 1 == counter % nBand)
+    //         {
+    //             fprintf(fw, "\nΓ, ");
+    //         }
+    //         if (0 != result[i][j])
+    //         {
+    //             fprintf(fw, "%6.3f,  ", result[i][j]);
+    //             counter++;
+    //         }
+    //         else
+    //         {
+    //             counter = 1;
+    //         }
+    //     }
+    // }
     fclose(fw);
     fclose(fp);
     return 0;
