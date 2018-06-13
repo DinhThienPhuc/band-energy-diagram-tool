@@ -32,8 +32,8 @@ tbase3_x
  acknowledgments of the ABINIT effort.
  For more information, see http://www.abinit.org .
 
-.Starting date : Mon  4 Jun 2018.
-- ( at 12h49 )
+.Starting date : Wed 13 Jun 2018.
+- ( at 11h55 )
   
 
  herald :  WARNING -
@@ -872,7 +872,7 @@ P           mkmem2         40
   xmpio_bsize_frm ............            0
   xmpi_address_kind ..........            8
   xmpi_offset_kind ...........            8
-  MPI_WTICK ..................    5.7018069026074364E-007
+  MPI_WTICK ..................    5.7018004004944605E-007
 
 ================================================================================
 == DATASET  1 ==================================================================
@@ -1122,7 +1122,7 @@ ioarr: file name is tbase3_xo_DS1_DEN
 
   calculation expects a density         |  input file contains a density
 . ABINIT  code version 7.4.3            |  ABINIT  code version 7.4.3
-. date 20180604 bantot  320 natom    2  |  date 20180604 bantot   50 natom    2
+. date 20180613 bantot  320 natom    2  |  date 20180613 bantot   50 natom    2
   nkpt  40 nsym 48 ngfft  20,  20,  20  |  nkpt  10 nsym 48 ngfft  20,  20,  20
   ntypat  1 ecut_eff   8.0000000        |  ntypat  1 ecut_eff   8.0000000
   usepaw  0                             |  usepaw  0
@@ -1499,7 +1499,7 @@ P           mkmem2         40
  [4] Fast radix 2, 3, 4 and 5 kernels for Fast Fourier Transformations
  on computers with overlapping multiply-add instructions.
  S. Goedecker, SIAM J. on Scientific Computing 18, 1605 (1997).
- Proc.   0 individual time (sec): cpu=          4.2  wall=          4.4
+ Proc.   0 individual time (sec): cpu=          4.0  wall=          4.2
 
  Calculation completed.
 .Delivered    5 WARNINGs and   4 COMMENTs to log file.

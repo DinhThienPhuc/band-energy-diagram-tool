@@ -9,6 +9,23 @@
 #define NUMBER_ONLY_PATTERN "^[^a-zA-Z]+$"
 #define INCLUDE_NBAND_PATTERN "(nband)"
 #define DEFAULT_COLS 8
+#define HARTREE_EV 27.2116
+
+struct KPOINTS
+{
+    char name[50];
+    int x;
+    int y;
+    int z;
+    int id;
+};
+
+FILE *fp;
+FILE *fw;
+int nBand, line = 0;
+char newString[100][100];
+double result[100][100];
+char buf[BUF_SIZE];
 
 int match(const char *string, char *pattern)
 {
@@ -105,33 +122,8 @@ int getNBand(char s1[])
     return nBand;
 }
 
-int main(int argc, char *argv[])
+int readEnergyFile(int nBandPosition)
 {
-    FILE *fp;
-    FILE *fw;
-    int nBand;
-    char buf[BUF_SIZE];
-    if (argc != 3)
-    {
-        fprintf(stderr,
-                "Usage: %s <soure-file>\n", argv[0]);
-        return 1;
-    }
-    if (0 == strcmp(argv[1], argv[2]))
-    { /* Open source file. */
-        perror("Choose an other name for output file. Or add some extension!");
-        return 1;
-    }
-    fw = fopen(argv[2], "w");
-    if ((fp = fopen(argv[1], "r")) == NULL)
-    { /* Open source file. */
-        perror("fopen source-file");
-        return 1;
-    }
-    int line = 0, nBandPosition = 0;
-    char newString[100][100];
-    double result[100][100];
-    char *kPath[100];
     while (fgets(buf, sizeof(buf), fp) != NULL)
     {
         buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
@@ -140,6 +132,7 @@ int main(int argc, char *argv[])
             nBand = getNBand(buf);
             nBandPosition++;
         }
+        // Get line with numbers only
         if (1 == match(buf, NUMBER_ONLY_PATTERN))
         {
             int i, j, ctr = 0;
@@ -176,36 +169,30 @@ int main(int argc, char *argv[])
                 }
                 int col = start == 1 ? k - 1 : k;
                 result[line][col] = num;
+<<<<<<< HEAD
                 if (0 == line % 8)
                 {
                     kPath[line] = "\g(G)";
                 }
+=======
+>>>>>>> 8f580a0e4068d337c7e1bb56aa0e1791553d1b61
             }
             line++;
         }
     }
+    return 0;
+}
 
-    // for (int i = 0; i < line; i++)
-    // {
-    //     char *kPoint = kPath[i];
-    //     if (NULL != kPoint)
-    //     {
-    //         printf("    %s\n", kPoint);
-    //     }
-    //     else
-    //     {
-    //         printf("     \n", kPoint);
-    //     }
-    // }
-
+int writeFile()
+{
     int counter = 1;
     char space[] = " ";
     int numbersInLine = nBand < DEFAULT_COLS ? nBand : DEFAULT_COLS;
     for (int i = 0; i < line; i++)
     {
-        char *kPoint = kPath[i];
         if (0 == i)
         {
+<<<<<<< HEAD
             if (NULL != kPoint)
             {
                 fprintf(fw, "%s%s%s%s%s,%s%s", space, kPoint, space, space);
@@ -214,24 +201,26 @@ int main(int argc, char *argv[])
             {
                 fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, space, space, space);
             }
+=======
+            fprintf(fw, "%3d,%s%s", 1, space, space);
+>>>>>>> 8f580a0e4068d337c7e1bb56aa0e1791553d1b61
         }
         for (int j = 0; j < numbersInLine; j++)
         {
             if (1 != counter && 1 == counter % nBand)
             {
-                fprintf(fw, "\n");
-                if (NULL != kPoint)
+                if (0 != i)
                 {
-                    fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, kPoint, space, space);
+                    fprintf(fw, "\n%3d,%s%s", i + 1, space, space);
                 }
                 else
                 {
-                    fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, space, space, space);
+                    fprintf(fw, "\n,%s%s", space, space);
                 }
             }
             if (0 != result[i][j])
             {
-                fprintf(fw, "%6.3f,  ", result[i][j]);
+                fprintf(fw, "%6.3f,%s%s", result[i][j], space, space);
                 counter++;
             }
             else
@@ -240,30 +229,31 @@ int main(int argc, char *argv[])
             }
         }
     }
+    return 0;
+}
 
-    // for (int i = 0; i < line; i++)
-    // {
-    //     if (0 == i)
-    //     {
-    //         fprintf(fw, "Γ, ");
-    //     }
-    //     for (int j = 0; j < numbersInLine; j++)
-    //     {
-    //         if (1 != counter && 1 == counter % nBand)
-    //         {
-    //             fprintf(fw, "\nΓ, ");
-    //         }
-    //         if (0 != result[i][j])
-    //         {
-    //             fprintf(fw, "%6.3f,  ", result[i][j]);
-    //             counter++;
-    //         }
-    //         else
-    //         {
-    //             counter = 1;
-    //         }
-    //     }
-    // }
+int main(int argc, char *argv[])
+{
+    if (argc != 3)
+    {
+        fprintf(stderr,
+                "Usage: %s <soure-file>\n", argv[0]);
+        return 1;
+    }
+    if (0 == strcmp(argv[1], argv[2]))
+    { /* Open source file. */
+        perror("Choose an other name for output file. Or add some extension!");
+        return 1;
+    }
+    fw = fopen(argv[2], "w");
+    if ((fp = fopen(argv[1], "r")) == NULL)
+    { /* Open source file. */
+        perror("fopen source-file");
+        return 1;
+    }
+    int nBandPosition = 0;
+    readEnergyFile(nBandPosition);
+    writeFile();
     fclose(fw);
     fclose(fp);
     return 0;

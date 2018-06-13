@@ -14,8 +14,8 @@
  acknowledgments of the ABINIT effort.
  For more information, see http://www.abinit.org .
 
-.Starting date : Mon  4 Jun 2018.
-- ( at 12h49 )
+.Starting date : Wed 13 Jun 2018.
+- ( at 11h55 )
   
 
  herald :  WARNING -
@@ -1083,10 +1083,10 @@ P           mkmem2         40
  on computers with overlapping multiply-add instructions.
  S. Goedecker, SIAM J. on Scientific Computing 18, 1605 (1997).
 -
-- Proc.   0 individual time (sec): cpu=          4.2  wall=          4.4
+- Proc.   0 individual time (sec): cpu=          4.0  wall=          4.2
 
 ================================================================================
 
  Calculation completed.
 .Delivered    5 WARNINGs and   4 COMMENTs to log file.
-+Overall time at end (sec) : cpu=          4.2  wall=          4.4
++Overall time at end (sec) : cpu=          4.0  wall=          4.2
