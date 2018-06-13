@@ -8,24 +8,19 @@
 #define BUF_SIZE 8192
 #define NUMBER_ONLY_PATTERN "^[^a-zA-Z]+$"
 #define INCLUDE_NBAND_PATTERN "(nband)"
+#define INCLUDE_FERMI_PATTERN "(Fermi)"
+#define INCLUDE_OCC_PATTERN "( occ )"
 #define DEFAULT_COLS 8
 #define HARTREE_EV 27.2116
 
-struct KPOINTS
-{
-    char name[50];
-    int x;
-    int y;
-    int z;
-    int id;
-};
-
-FILE *fp;
+FILE *fp1;
+FILE *fp2;
 FILE *fw;
-int nBand, line = 0;
+int nBand, line = 0, occ;
+float fermi;
 char newString[100][100];
 double result[100][100];
-char buf[BUF_SIZE];
+char buf1[BUF_SIZE], buf2[BUF_SIZE];
 
 int match(const char *string, char *pattern)
 {
@@ -122,23 +117,52 @@ int getNBand(char s1[])
     return nBand;
 }
 
+float getFermi(char s1[])
+{
+    char **tokens;
+    char *params;
+    float fermi;
+    tokens = splitString(s1, '=');
+    for (int i = 0; *(tokens + i); i++)
+    {
+        if (1 == match(*(tokens + i), "Average"))
+        {
+            params = *(tokens + i);
+            break;
+        }
+        free(*(tokens + i));
+    }
+    tokens = splitString(params, 'A');
+    for (int i = 0; *(tokens + i); i++)
+    {
+        if (1 == match(*(tokens + i), NUMBER_ONLY_PATTERN))
+        {
+            fermi = strtod(*(tokens + i), NULL);
+        }
+        free(*(tokens + i));
+    }
+    free(params);
+    free(tokens);
+    return fermi;
+}
+
 int readEnergyFile(int nBandPosition)
 {
-    while (fgets(buf, sizeof(buf), fp) != NULL)
+    while (fgets(buf1, sizeof(buf1), fp1) != NULL)
     {
-        buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
-        if (1 == match(buf, INCLUDE_NBAND_PATTERN) && 0 == nBandPosition)
+        buf1[strlen(buf1) - 1] = '\0'; // eat the newline fgets() stores
+        if (1 == match(buf1, INCLUDE_NBAND_PATTERN) && 0 == nBandPosition)
         {
-            nBand = getNBand(buf);
+            nBand = getNBand(buf1);
             nBandPosition++;
         }
         // Get line with numbers only
-        if (1 == match(buf, NUMBER_ONLY_PATTERN))
+        if (1 == match(buf1, NUMBER_ONLY_PATTERN))
         {
             int i, j, ctr = 0;
-            for (int i = 0; i < strlen(buf); i++)
+            for (int i = 0; i < strlen(buf1); i++)
             {
-                if (buf[i] == ' ' || buf[i] == '\0')
+                if (buf1[i] == ' ' || buf1[i] == '\0')
                 {
                     if (0 != j)
                     {
@@ -149,12 +173,12 @@ int readEnergyFile(int nBandPosition)
                 else
                 {
                     // Case: - prefix
-                    if (0 == j && '-' != buf[i])
+                    if (0 == j && '-' != buf1[i])
                     {
                         newString[ctr][j] = '+';
                         j++;
                     }
-                    newString[ctr][j] = buf[i];
+                    newString[ctr][j] = buf1[i];
                     j++;
                 }
             }
@@ -169,15 +193,25 @@ int readEnergyFile(int nBandPosition)
                 }
                 int col = start == 1 ? k - 1 : k;
                 result[line][col] = num;
-<<<<<<< HEAD
-                if (0 == line % 8)
-                {
-                    kPath[line] = "\g(G)";
-                }
-=======
->>>>>>> 8f580a0e4068d337c7e1bb56aa0e1791553d1b61
             }
             line++;
+        }
+    }
+    return 0;
+}
+
+int readOutputFile()
+{
+    while (fgets(buf2, sizeof(buf2), fp2) != NULL)
+    {
+        buf1[strlen(buf2) - 1] = '\0'; // eat the newline fgets() stores
+        if (1 == match(buf2, INCLUDE_FERMI_PATTERN))
+        {
+            fermi = getFermi(buf2) * HARTREE_EV;
+        }
+        if (1 == match(buf2, INCLUDE_OCC_PATTERN))
+        {
+            // printf("%s\n", buf2);
         }
     }
     return 0;
@@ -187,35 +221,24 @@ int writeFile()
 {
     int counter = 1;
     char space[] = " ";
-    int numbersInLine = nBand < DEFAULT_COLS ? nBand : DEFAULT_COLS;
+    int numbersInLine = (nBand < DEFAULT_COLS ? nBand : DEFAULT_COLS) + 2;
     for (int i = 0; i < line; i++)
     {
         if (0 == i)
         {
-<<<<<<< HEAD
-            if (NULL != kPoint)
-            {
-                fprintf(fw, "%s%s%s%s%s,%s%s", space, kPoint, space, space);
-            }
-            else
-            {
-                fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, space, space, space);
-            }
-=======
             fprintf(fw, "%3d,%s%s", 1, space, space);
->>>>>>> 8f580a0e4068d337c7e1bb56aa0e1791553d1b61
         }
         for (int j = 0; j < numbersInLine; j++)
         {
             if (1 != counter && 1 == counter % nBand)
             {
-                if (0 != i)
+                if (i < line - 1)
                 {
-                    fprintf(fw, "\n%3d,%s%s", i + 1, space, space);
+                    fprintf(fw, "%.3f\n%3d,%s%s", fermi, i + 2, space, space);
                 }
                 else
                 {
-                    fprintf(fw, "\n,%s%s", space, space);
+                    fprintf(fw, "%.3f\n", fermi);
                 }
             }
             if (0 != result[i][j])
@@ -234,27 +257,35 @@ int writeFile()
 
 int main(int argc, char *argv[])
 {
-    if (argc != 3)
+    if (argc != 4)
     {
         fprintf(stderr,
-                "Usage: %s <soure-file>\n", argv[0]);
+                "Usage: %s <file.out> <soure-file> <file_out.csv>\n", argv[0]);
         return 1;
     }
-    if (0 == strcmp(argv[1], argv[2]))
+    if (0 == strcmp(argv[2], argv[3]))
     { /* Open source file. */
         perror("Choose an other name for output file. Or add some extension!");
         return 1;
     }
-    fw = fopen(argv[2], "w");
-    if ((fp = fopen(argv[1], "r")) == NULL)
+    fw = fopen(argv[3], "w");
+    if ((fp1 = fopen(argv[2], "r")) == NULL)
+    { /* Open source file. */
+        perror("fopen source-file");
+        return 1;
+    }
+    if ((fp2 = fopen(argv[1], "r")) == NULL)
     { /* Open source file. */
         perror("fopen source-file");
         return 1;
     }
     int nBandPosition = 0;
+    readOutputFile();
+    printf("Fermi: %f\n", fermi);
     readEnergyFile(nBandPosition);
     writeFile();
     fclose(fw);
-    fclose(fp);
+    fclose(fp1);
+    fclose(fp2);
     return 0;
 }
