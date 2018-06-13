@@ -178,7 +178,7 @@ int main(int argc, char *argv[])
                 result[line][col] = num;
                 if (0 == line % 8)
                 {
-                    kPath[line] = "Γ";
+                    kPath[line] = "\\g(G)";
                 }
             }
             line++;
@@ -208,7 +208,7 @@ int main(int argc, char *argv[])
         {
             if (NULL != kPoint)
             {
-                fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, kPoint, space, space);
+                fprintf(fw, "%s,%s%s", kPoint, space, space);
             }
             else
             {
@@ -222,7 +222,7 @@ int main(int argc, char *argv[])
                 fprintf(fw, "\n");
                 if (NULL != kPoint)
                 {
-                    fprintf(fw, "%s%s%s%s%s,%s%s", space, space, space, space, kPoint, space, space);
+                    fprintf(fw, "%s,%s%s", kPoint, space, space);
                 }
                 else
                 {
