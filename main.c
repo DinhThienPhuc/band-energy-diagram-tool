@@ -10,16 +10,18 @@
 #define INCLUDE_NBAND_PATTERN "(nband)"
 #define INCLUDE_FERMI_PATTERN "(Fermi)"
 #define INCLUDE_OCC_PATTERN "( occ )"
+#define INCLUDE_K_POINTS "(k points)"
+#define HARTREE_UNIT "(hartree)"
 #define DEFAULT_COLS 8
-#define HARTREE_EV 27.2116
+#define HARTREE_TO_EV 27.2116
 
 FILE *fp1;
 FILE *fp2;
 FILE *fw;
-int nBand, line = 0, occ;
-float fermi;
-char newString[100][100];
-double result[100][100];
+int nBand, occ, groupLines = 1, row, col;
+float fermi, vbm, cbm;
+char newString[500][500];
+double result[500][500];
 char buf1[BUF_SIZE], buf2[BUF_SIZE];
 
 int match(const char *string, char *pattern)
@@ -143,60 +145,88 @@ float getFermi(char s1[])
     }
     free(params);
     free(tokens);
-    return fermi;
+    return 1 == match(s1, HARTREE_UNIT) ? fermi * HARTREE_TO_EV : fermi;
+}
+
+int getOCC(char s1[])
+{
+    char *pch;
+    float temp = 1;
+    int counter = 0;
+    pch = strtok(s1, " ");
+    pch = strtok(NULL, " ");
+    while (pch != NULL)
+    {
+        temp = strtod(pch, NULL);
+        if (0 == temp)
+        {
+            break;
+        }
+        counter++;
+        pch = strtok(NULL, " ");
+    }
+    return counter;
+}
+
+float getVBM(int occ)
+{
+    float currentVbm = 0;
+    for (int i = 0; i < row; i++)
+    {
+        currentVbm = currentVbm > result[i][occ - 1] ? currentVbm : result[i][occ - 1];
+    }
+    return currentVbm;
+}
+
+float getCBM(int occ)
+{
+    float currentCbm = result[0][occ];
+    for (int i = 0; i < row; i++)
+    {
+        currentCbm = currentCbm < result[i][occ] ? currentCbm : result[i][occ - 1];
+    }
+    return currentCbm;
 }
 
 int readEnergyFile(int nBandPosition)
 {
+    int line = 0, j = 0, counter = 0;
     while (fgets(buf1, sizeof(buf1), fp1) != NULL)
     {
         buf1[strlen(buf1) - 1] = '\0'; // eat the newline fgets() stores
         if (1 == match(buf1, INCLUDE_NBAND_PATTERN) && 0 == nBandPosition)
         {
             nBand = getNBand(buf1);
+            col = nBand;
+            if (DEFAULT_COLS < nBand)
+            {
+                groupLines = nBand % DEFAULT_COLS < DEFAULT_COLS
+                                 ? nBand / DEFAULT_COLS + 1
+                                 : nBand / DEFAULT_COLS;
+            }
             nBandPosition++;
         }
         // Get line with numbers only
         if (1 == match(buf1, NUMBER_ONLY_PATTERN))
         {
-            int i, j, ctr = 0;
-            for (int i = 0; i < strlen(buf1); i++)
+            // printf("%d-%d\n", nBand, groupLines);
+            char *pch;
+            pch = strtok(buf1, " ");
+            if (0 == j % nBand)
             {
-                if (buf1[i] == ' ' || buf1[i] == '\0')
-                {
-                    if (0 != j)
-                    {
-                        ctr++;
-                    }
-                    j = 0; // for next word, init index to 0
-                }
-                else
-                {
-                    // Case: - prefix
-                    if (0 == j && '-' != buf1[i])
-                    {
-                        newString[ctr][j] = '+';
-                        j++;
-                    }
-                    newString[ctr][j] = buf1[i];
-                    j++;
-                }
+                j = 0;
             }
-            int start = 0 == line ? 0 : 1;
-            for (int k = start; k <= ctr; k++)
+            while (pch != NULL)
             {
-                double num = strtod(newString[k], NULL);
-                if (fw == NULL)
-                {
-                    perror("Cannot create file to write!");
-                    return 1;
-                }
-                int col = start == 1 ? k - 1 : k;
-                result[line][col] = num;
+                result[line / groupLines][j] = strtod(pch, NULL);
+                // printf("%d-%d: %6.3f\n", line / groupLines, j, result[line / groupLines][j]);
+                pch = strtok(NULL, " ");
+                j++;
             }
             line++;
         }
     }
+    row = line / groupLines;
     return 0;
 }
 
@@ -207,11 +237,11 @@ int readOutputFile()
         buf1[strlen(buf2) - 1] = '\0'; // eat the newline fgets() stores
         if (1 == match(buf2, INCLUDE_FERMI_PATTERN))
         {
-            fermi = getFermi(buf2) * HARTREE_EV;
+            fermi = getFermi(buf2);
         }
         if (1 == match(buf2, INCLUDE_OCC_PATTERN))
         {
-            // printf("%s\n", buf2);
+            occ = getOCC(buf2);
         }
     }
     return 0;
@@ -219,36 +249,21 @@ int readOutputFile()
 
 int writeFile()
 {
-    int counter = 1;
-    char space[] = " ";
-    int numbersInLine = (nBand < DEFAULT_COLS ? nBand : DEFAULT_COLS) + 2;
-    for (int i = 0; i < line; i++)
+    for (int i = 0; i < row; i++)
     {
-        if (0 == i)
+        for (int j = 0; j < col; j++)
         {
-            fprintf(fw, "%3d,%s%s", 1, space, space);
-        }
-        for (int j = 0; j < numbersInLine; j++)
-        {
-            if (1 != counter && 1 == counter % nBand)
+            if (0 == j)
             {
-                if (i < line - 1)
-                {
-                    fprintf(fw, "%.3f\n%3d,%s%s", fermi, i + 2, space, space);
-                }
-                else
-                {
-                    fprintf(fw, "%.3f\n", fermi);
-                }
+                fprintf(fw, "%3d, ", i + 1);
             }
-            if (0 != result[i][j])
+            if (j == col - 1)
             {
-                fprintf(fw, "%6.3f,%s%s", result[i][j], space, space);
-                counter++;
+                fprintf(fw, "%7.3f,  %7.3f\n", result[i][j], fermi);
             }
             else
             {
-                counter = 1;
+                fprintf(fw, "%7.3f, ", result[i][j]);
             }
         }
     }
@@ -279,11 +294,15 @@ int main(int argc, char *argv[])
         perror("fopen source-file");
         return 1;
     }
-    int nBandPosition = 0;
+
     readOutputFile();
-    printf("Fermi: %f\n", fermi);
+    int nBandPosition = 0;
     readEnergyFile(nBandPosition);
     writeFile();
+    float vbm = getVBM(occ);
+    float cbm = getCBM(occ);
+    printf("occ: %d\nvbm: %f\ncbm: %f\nfermi: %f\n", occ, vbm, cbm, fermi);
+    printf("%f - %f\n", result[0][occ - 1], result[0][occ]);
     fclose(fw);
     fclose(fp1);
     fclose(fp2);
