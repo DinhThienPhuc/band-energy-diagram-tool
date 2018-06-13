@@ -1,0 +1,12 @@
+Symmetry k-points of BCT1:
+Γ (0, 0, 0)
+X (1/2, 0, 0)
+Z (1/2, 1/2, -1/2)
+N (0, 1/2, 0)
+P (1/4, 1/4, 1/4)
+
+Path: Γ-X-M-Γ-Z-P-N-Z1-M|X-P
+
+Symmetry k-points of BCT2:
+
+Path: Γ-X-Y-Σ-Γ-Z-Σ1-N-P-Y1-Z|X-P

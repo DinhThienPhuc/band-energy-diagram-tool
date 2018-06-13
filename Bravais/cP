@@ -1,0 +1,7 @@
+Symmetry k-points of CUB:
+Γ (0, 0, 0)
+R (1/2, 1/2, 1/2)
+X (0, 1/2, 0)
+M (1/2, 1/2, 0)
+
+Path: Γ-X-M-Γ-R-X|M-R

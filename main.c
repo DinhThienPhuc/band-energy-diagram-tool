@@ -14,15 +14,18 @@
 #define HARTREE_UNIT "(hartree)"
 #define DEFAULT_COLS 8
 #define HARTREE_TO_EV 27.2116
+#define BOUNDARY 0.08 /**eV**/
+#define DATASET "(DATASET)"
 
 FILE *fp1;
 FILE *fp2;
 FILE *fw;
 int nBand, occ, groupLines = 1, row, col;
 float fermi, vbm, cbm;
+char latticeType[10];
 char newString[500][500];
 double result[500][500];
-char buf1[BUF_SIZE], buf2[BUF_SIZE];
+char buf1[BUF_SIZE], buf2[BUF_SIZE], buf3[BUF_SIZE];
 
 int match(const char *string, char *pattern)
 {
@@ -170,7 +173,7 @@ int getOCC(char s1[])
 
 float getVBM(int occ)
 {
-    float currentVbm = 0;
+    float currentVbm = result[0][occ - 1];
     for (int i = 0; i < row; i++)
     {
         currentVbm = currentVbm > result[i][occ - 1] ? currentVbm : result[i][occ - 1];
@@ -183,9 +186,27 @@ float getCBM(int occ)
     float currentCbm = result[0][occ];
     for (int i = 0; i < row; i++)
     {
-        currentCbm = currentCbm < result[i][occ] ? currentCbm : result[i][occ - 1];
+        currentCbm = currentCbm < result[i][occ] ? currentCbm : result[i][occ];
     }
     return currentCbm;
+}
+
+char *getLatticeType(char s1[])
+{
+    char *pch;
+    pch = strtok(s1, " ");
+    int flag = 0;
+    while (pch != NULL)
+    {
+        if (1 == match(pch, "Bravais"))
+        {
+            return strtok(NULL, " ");
+        }
+        else
+        {
+            pch = strtok(NULL, " ");
+        }
+    }
 }
 
 int readEnergyFile(int nBandPosition)
@@ -232,9 +253,10 @@ int readEnergyFile(int nBandPosition)
 
 int readOutputFile()
 {
+    int flag = 0;
     while (fgets(buf2, sizeof(buf2), fp2) != NULL)
     {
-        buf1[strlen(buf2) - 1] = '\0'; // eat the newline fgets() stores
+        buf2[strlen(buf2) - 1] = '\0'; // eat the newline fgets() stores
         if (1 == match(buf2, INCLUDE_FERMI_PATTERN))
         {
             fermi = getFermi(buf2);
@@ -243,8 +265,60 @@ int readOutputFile()
         {
             occ = getOCC(buf2);
         }
+        if (1 == match(buf2, DATASET) && 0 == flag)
+        {
+            flag = 1;
+            strcpy(latticeType, getLatticeType(buf2));
+        }
     }
     return 0;
+}
+
+float getEg(float fermi, float vbm, float cbm)
+{
+    char metal[] = "metal";
+    char pSemiconductor[] = "p-semiconductor";
+    char nSemiconductor[] = "n-semiconductor";
+    if (fermi < vbm)
+    {
+        float denta = vbm - fermi;
+        if (BOUNDARY < denta)
+        {
+            printf("%s\n", metal);
+        }
+        else
+        {
+            printf("%s\n", pSemiconductor);
+        }
+    }
+    if (cbm < fermi)
+    {
+        float denta = cbm - fermi;
+        if (BOUNDARY < denta)
+        {
+            printf("%s\n", metal);
+        }
+        else
+        {
+            printf("%s\n", nSemiconductor);
+        }
+    }
+    if (vbm < fermi && fermi < cbm)
+    {
+        if (fermi - vbm < cbm - fermi)
+        {
+            printf("%s\n", pSemiconductor);
+        }
+        if (cbm - fermi < fermi - vbm)
+        {
+            printf("%s\n", nSemiconductor);
+        }
+        if (cbm - fermi == fermi - vbm)
+        {
+            printf("%s\n", "Si");
+        }
+    }
+    return vbm < cbm ? cbm - vbm : 0;
 }
 
 int writeFile()
@@ -272,37 +346,54 @@ int writeFile()
 
 int main(int argc, char *argv[])
 {
-    if (argc != 4)
-    {
-        fprintf(stderr,
-                "Usage: %s <file.out> <soure-file> <file_out.csv>\n", argv[0]);
-        return 1;
-    }
-    if (0 == strcmp(argv[2], argv[3]))
-    { /* Open source file. */
-        perror("Choose an other name for output file. Or add some extension!");
-        return 1;
-    }
-    fw = fopen(argv[3], "w");
-    if ((fp1 = fopen(argv[2], "r")) == NULL)
-    { /* Open source file. */
-        perror("fopen source-file");
-        return 1;
-    }
-    if ((fp2 = fopen(argv[1], "r")) == NULL)
-    { /* Open source file. */
-        perror("fopen source-file");
-        return 1;
-    }
+    char input[256];
+    char pathname[256];
+    char buf[0x100];
 
+    printf("Welcome! Please enter output file to get the Fermi energy...\n");
+    scanf("%s", input);
+    if ((fp2 = fopen(input, "r")) == NULL)
+    {
+        perror("fopen source-file");
+        return 1;
+    }
     readOutputFile();
+
+    printf("\nTool detected your lattice: %s\n\n", latticeType);
+    strcpy(pathname, "Bravais/");
+    strcat(pathname, latticeType);
+
+    if ((fp2 = fopen(pathname, "r")) == NULL)
+    {
+        perror("Open file: ");
+        return 1;
+    }
+    while (fgets(buf3, sizeof(buf3), fp2) != NULL)
+    {
+        buf3[strlen(buf3)] = '\0';
+        printf("%s", buf3);
+    }
+    printf("\n\nTo create a band structure graph, use some program like Abinit to get some eigenenergy files...\n");
+    printf("\nEnter eigennergy file: ");
+
+    scanf("%s", input);
+    if ((fp1 = fopen(input, "r")) == NULL)
+    {
+        perror("fopen source-file");
+        return 1;
+    }
+    printf("\nEnter output file's name (.csv): ");
+    scanf("%s", input);
+    fw = fopen(input, "w");
+
     int nBandPosition = 0;
     readEnergyFile(nBandPosition);
     writeFile();
     float vbm = getVBM(occ);
     float cbm = getCBM(occ);
-    printf("occ: %d\nvbm: %f\ncbm: %f\nfermi: %f\n", occ, vbm, cbm, fermi);
-    printf("%f - %f\n", result[0][occ - 1], result[0][occ]);
+    printf("Material: ");
+    float Eg = getEg(fermi, vbm, cbm);
+    printf("Eg = %f\n", Eg);
     fclose(fw);
     fclose(fp1);
     fclose(fp2);
