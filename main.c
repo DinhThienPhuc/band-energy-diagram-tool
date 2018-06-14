@@ -14,7 +14,7 @@
 #define HARTREE_UNIT "(hartree)"
 #define DEFAULT_COLS 8
 #define HARTREE_TO_EV 27.2116
-#define BOUNDARY 0.08 /**eV**/
+#define BOUNDARY 0.1 /**eV**/
 #define DATASET "(DATASET)"
 
 FILE *fp1;
@@ -391,9 +391,10 @@ int main(int argc, char *argv[])
     writeFile();
     float vbm = getVBM(occ);
     float cbm = getCBM(occ);
-    printf("Material: ");
+    printf("\nMaterial: ");
     float Eg = getEg(fermi, vbm, cbm);
-    printf("Eg = %f\n", Eg);
+    printf("Fermi value: %f\n", fermi);
+    printf("Eg = %f\n\n", Eg);
     fclose(fw);
     fclose(fp1);
     fclose(fp2);
