@@ -14,7 +14,7 @@
 #define HARTREE_UNIT "(hartree)"
 #define DEFAULT_COLS 8
 #define HARTREE_TO_EV 27.2116
-#define BOUNDARY 0.1 /**eV**/
+#define BOUNDARY 1 /**eV**/
 #define DATASET "(DATASET)"
 
 FILE *fp1;
@@ -279,46 +279,53 @@ float getEg(float fermi, float vbm, float cbm)
     char metal[] = "metal";
     char pSemiconductor[] = "p-semiconductor";
     char nSemiconductor[] = "n-semiconductor";
-    if (fermi < vbm)
+
+    // if (fermi < vbm)
+    // {
+    //     float denta = vbm - fermi;
+    //     if (BOUNDARY < denta)
+    //     {
+    //         printf("%s\n", metal);
+    //     }
+    //     else
+    //     {
+    //         printf("%s\n", pSemiconductor);
+    //     }
+    // }
+    // if (cbm < fermi)
+    // {
+    //     float denta = cbm - fermi;
+    //     if (BOUNDARY < denta)
+    //     {
+    //         printf("%s\n", metal);
+    //     }
+    //     else
+    //     {
+    //         printf("%s\n", nSemiconductor);
+    //     }
+    // }
+    // if (vbm < fermi && fermi < cbm)
+    // {
+    //     if (fermi - vbm < cbm - fermi)
+    //     {
+    //         printf("%s\n", pSemiconductor);
+    //     }
+    //     if (cbm - fermi < fermi - vbm)
+    //     {
+    //         printf("%s\n", nSemiconductor);
+    //     }
+    //     if (cbm - fermi == fermi - vbm)
+    //     {
+    //         printf("%s\n", "Si");
+    //     }
+    // }
+
+    float eg = vbm < cbm ? cbm - vbm : 0;
+    if (0 <= eg && eg < 5)
     {
-        float denta = vbm - fermi;
-        if (BOUNDARY < denta)
-        {
-            printf("%s\n", metal);
-        }
-        else
-        {
-            printf("%s\n", pSemiconductor);
-        }
+        printf("Semiconductor\n");
     }
-    if (cbm < fermi)
-    {
-        float denta = cbm - fermi;
-        if (BOUNDARY < denta)
-        {
-            printf("%s\n", metal);
-        }
-        else
-        {
-            printf("%s\n", nSemiconductor);
-        }
-    }
-    if (vbm < fermi && fermi < cbm)
-    {
-        if (fermi - vbm < cbm - fermi)
-        {
-            printf("%s\n", pSemiconductor);
-        }
-        if (cbm - fermi < fermi - vbm)
-        {
-            printf("%s\n", nSemiconductor);
-        }
-        if (cbm - fermi == fermi - vbm)
-        {
-            printf("%s\n", "Si");
-        }
-    }
-    return vbm < cbm ? cbm - vbm : 0;
+    return eg;
 }
 
 int writeFile()
