@@ -207,6 +207,8 @@ char *getLatticeType(char s1[])
             pch = strtok(NULL, " ");
         }
     }
+
+    return "";
 }
 
 int readEnergyFile(int nBandPosition)
@@ -279,46 +281,6 @@ float getEg(float fermi, float vbm, float cbm)
     char metal[] = "metal";
     char pSemiconductor[] = "p-semiconductor";
     char nSemiconductor[] = "n-semiconductor";
-
-    // if (fermi < vbm)
-    // {
-    //     float denta = vbm - fermi;
-    //     if (BOUNDARY < denta)
-    //     {
-    //         printf("%s\n", metal);
-    //     }
-    //     else
-    //     {
-    //         printf("%s\n", pSemiconductor);
-    //     }
-    // }
-    // if (cbm < fermi)
-    // {
-    //     float denta = cbm - fermi;
-    //     if (BOUNDARY < denta)
-    //     {
-    //         printf("%s\n", metal);
-    //     }
-    //     else
-    //     {
-    //         printf("%s\n", nSemiconductor);
-    //     }
-    // }
-    // if (vbm < fermi && fermi < cbm)
-    // {
-    //     if (fermi - vbm < cbm - fermi)
-    //     {
-    //         printf("%s\n", pSemiconductor);
-    //     }
-    //     if (cbm - fermi < fermi - vbm)
-    //     {
-    //         printf("%s\n", nSemiconductor);
-    //     }
-    //     if (cbm - fermi == fermi - vbm)
-    //     {
-    //         printf("%s\n", "Si");
-    //     }
-    // }
 
     float eg = vbm < cbm ? cbm - vbm : 0;
     if (0 <= eg && eg < 5)
