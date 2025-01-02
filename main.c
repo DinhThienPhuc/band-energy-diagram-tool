@@ -342,7 +342,7 @@ int main(int argc, char *argv[])
         buf3[strlen(buf3)] = '\0';
         printf("%s", buf3);
     }
-    printf("\n\nTo create a band structure graph, use some program like Abinit to get some eigenenergy files...\n");
+    printf("\n\nTo createe a band structure graph, use some program like Abinit to get some eigenenergy files...\n");
     printf("\nEnter eigennergy file: ");
 
     scanf("%s", input);
